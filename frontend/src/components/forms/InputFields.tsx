@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form"
+import React from "react"
 
 interface InputFieldsProps {
     label: string
@@ -6,18 +6,17 @@ interface InputFieldsProps {
     id: string
     type: string
     icon?: React.ReactNode
-    register?: any
+    register: any
 }
 
-export function InputFields({ label, placeholder, id, type, icon }: InputFieldsProps) {
-    const { register, handleSubmit } = useForm();
+export function InputFields({ label, placeholder, id, type, icon, register }: InputFieldsProps) {
 
     return (
         <>
             <label htmlFor={id} className="text-zinc-400">{label}</label>
             <div className="flex justify-between items-center rounded-lg bg-zinc-950 px-2">
             <input 
-                {...(register ? register(id, { required: true }) : {})}                 
+                {...register}
                 id={id}
                 type={type}
                 placeholder={placeholder}
