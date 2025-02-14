@@ -11,12 +11,12 @@ export default class AuthServices {
 
     async login(email: string, password: string) {
         const userExists = await this.user.findByEmail(email);
-        if (!userExists) throw new Error('User not found');
+        if (!userExists) throw new Error('Usuário nao encontrado');
 
         console.log(userExists);
         
         const loginCorrect = await bcrypt.compare(password, userExists.password);
-        if (!loginCorrect) throw new Error('Invalid credentials');
+        if (!loginCorrect) throw new Error('Credenciais incorretas');
 
               
         const token = jwt.sign({ email, id: userExists.id }, process.env.ACCESS_TOKEN_SECRET as string, { expiresIn: '1d' });

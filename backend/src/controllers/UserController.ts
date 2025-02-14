@@ -12,7 +12,7 @@ export default class UserController{
             const { email, password, name } = req.body;
 
             if(!name || !email || !password){
-                return res.status(400).json({error: "All fields are required"})
+                return res.status(400).json({error: "Todos os campos sao obrigatorio"})
             }
 
             const newUser = await this.userService.create(email, password, name);
@@ -20,7 +20,7 @@ export default class UserController{
             return res.status(201).json(newUser)
             
         }catch(e:any){
-            console.error("Error creating user:", e);
+            console.error("Erro ao criar usuário:", e);
             return res.status(400).json({ error: e.message })
         }
     }
@@ -30,19 +30,19 @@ export default class UserController{
             const id = parseInt(req.params.id);
 
             if(!id){
-                return res.status(400).json({error: "ID is required"})
+                return res.status(400).json({error: "ID é obrigatorio"})
             }
 
             const findUser = await this.userService.findById(id);
 
             if(!findUser){
-                res.status(404).json({error: "User not found"})
+                return res.status(404).json({error: "Usuario nao encontrado"})
             }
 
             return res.status(200).json(findUser)
 
         }catch(e){
-           console.log("Error getting user by ID:", e);
+           console.log("Erro ao buscar usuário:", e);
                        
         }
     }
@@ -52,18 +52,18 @@ export default class UserController{
             const { email } = req.query as { email: string };
 
             if(!email){
-                return res.status(400).json({error: "Email is required"})
+                return res.status(400).json({error: "Email é obrigatorio"})	
             }
 
             const findUser = await this.userService.findByEmail(email);
 
             if(!findUser){
-                res.status(404).json({error: "User not found"})
+                return res.status(404).json({error: "Usuario nao encontrado"})
             }
 
             return(res.status(200).json(findUser))
         }catch(e){
-            console.log("Error getting user by email:", e);
+            console.log("Erro ao buscar usuário por email:", e);
         }
     }
 
@@ -73,18 +73,18 @@ export default class UserController{
             const { email, password, name } = req.body;
 
             if(!id){
-                return res.status(400).json({error: "Some fields are missing"})
+                return res.status(400).json({error: "Alguns campos estão faltando"})
             }
 
             const updatedUser = await this.userService.updateUser(id, {email, password, name});
 
             if(!updatedUser){
-                res.status(404).json({error: "User not found"})
+                return res.status(404).json({error: "Usuario nao encontrado"})
             }
 
-            return res.status(200).json({message: "User updated successfully"})
+            return res.status(200).json({message: "Usuario atualizado com sucesso"})
         }catch(e){
-            console.log("Error updating user:", e);
+            console.log("Erro ao atualizar usuário:", e);
         }
     }
 
@@ -93,18 +93,18 @@ export default class UserController{
             const id = parseInt(req.params.id);
 
             if(!id){
-                return res.status(400).json({error: "ID is required"})
+                return res.status(400).json({error: "ID é obrigatorio"})
             }
 
             const findUser = await this.userService.deleteUser(id);
 
             if(!findUser){
-                res.status(404).json({error: "User not found"})
+                return res.status(404).json({error: "Usuario nao encontrado"})
             }
 
-            res.status(200).json({message: "User deleted successfully"})
+            return res.status(200).json({message: "Usuario deletado com sucesso"})
         }catch(e){
-            console.log("Error deleting user:", e);
+            console.log("Erro ao deletar usuário:", e);
         }
     }
 

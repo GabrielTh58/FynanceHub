@@ -29,7 +29,7 @@ export function SideBar(){
 
             <div className="h-px w-[90%] bg-gradient-to-r from-transparent via-zinc-300 to-transparent my-5"></div>
 
-            <nav className="w-full flex flex-col">{renderItems()}</nav>
+            <nav className="w-full flex flex-col gap-2">{renderItems()}</nav>
         </aside>
     )
 }

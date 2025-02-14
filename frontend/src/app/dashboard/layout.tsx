@@ -7,6 +7,7 @@ export default function Layout({ children }: any) {
         <div className="flex">
             <SideBar />
             <main className="w-full py-6 px-6 bg-[#060B26]">
+                <Header />
                 {children}
             </main>
 

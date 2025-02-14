@@ -23,7 +23,7 @@ model User{
 
 model Transaction {
   id Int @id @default(autoincrement())
-  Type TransactionType
+  type TransactionType
   description String
   amount Float
   createdAt DateTime @default(now())

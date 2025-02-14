@@ -5,7 +5,7 @@ import Layout from "./layout";
 
 export default function Page() {
     return (
-        <Layout>    
+        <>    
             <section className="flex items-center gap-4 mb-5">
                 <AnalyticsCards title="Saldo" value="50,00" icon={<IconMoneybag className="text-blue-500" />} />
                 <AnalyticsCards title="Entrada" value="500,00" icon={<IconMoneybag className="text-blue-500" />} />
@@ -27,6 +27,6 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-        </Layout>
+        </>
     )
 }

@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import userRoutes from "./routes/users";
+import transactionRoutes from "./routes/transactions";
 import cors from "cors";
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.get("/", (req: any, res:any) => {
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/transactions", transactionRoutes);
 
 const PORT = 5000;
 app.listen(PORT, ()=>{

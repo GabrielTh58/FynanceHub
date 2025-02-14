@@ -12,11 +12,11 @@ export default class UserServices {
         const existingUser = await this.user.findByEmail(email);
 
         if (existingUser) {
-            throw new Error("User already exists.");
+            throw new Error("Usuário ja cadastrado.");
         }
 
         if(password.length < 6){
-            throw new Error("Password must be at least 6 characters long.");
+            throw new Error("Senha deve ter pelo menos 6 caracteres.");
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -29,7 +29,7 @@ export default class UserServices {
         });
 
         if (!newUser.id) {
-            throw new Error("Failed to create user. ID not generated.");
+            throw new Error("Falha ao criar o usuário. Id não fornecido.");
         }
 
         return { id: newUser.id, email: newUser.email, name: newUser.name };
@@ -51,7 +51,7 @@ export default class UserServices {
     async updateUser(id: number, data: Partial<User>) {
         if (data.password) {
             if (data.password.length < 6) {
-                throw new Error("Password must be at least 6 characters long.");
+                throw new Error("Senha deve ter pelo menos 6 caracteres.");
             }
             data.password = await bcrypt.hash(data.password, 10);
         }
