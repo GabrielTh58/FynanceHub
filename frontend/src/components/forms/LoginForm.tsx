@@ -45,7 +45,7 @@ export function LoginForm() {
                     register={register('email')}
                     label="Email"
                     placeholder="Digite seu email"
-                    id="email"
+                    name="email"
                     type="email"
                     icon={<IconMail stroke={1} />}
                 />
@@ -57,7 +57,7 @@ export function LoginForm() {
                     register={register('password')}
                     label="Senha"
                     placeholder="Digite a senha"
-                    id="password"
+                    name="password"
                     type="password"
                     icon={<IconEye stroke={1} />}
                 />

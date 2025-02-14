@@ -1,15 +1,15 @@
 import { User } from "../core/users/User";
-import { UserRepository } from "../models/UserRepositories";
+import { UserModel } from "../models/UserModel";
 import bcrypt from "bcrypt";
 export default class UserServices {
-    private repo: UserRepository
+    private user: UserModel
 
     constructor() {
-        this.repo = new UserRepository();
+        this.user = new UserModel();
     }
 
     async create(email: string, password: string, name: string) {
-        const existingUser = await this.repo.findByEmail(email);
+        const existingUser = await this.user.findByEmail(email);
 
         if (existingUser) {
             throw new Error("User already exists.");
@@ -21,7 +21,7 @@ export default class UserServices {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = await this.repo.create({
+        const newUser = await this.user.create({
             email,
             password: hashedPassword,
             name,
@@ -37,15 +37,15 @@ export default class UserServices {
     }
 
     async findById(id: number) {
-        return this.repo.findById(id);
+        return this.user.findById(id);
     }
 
     async findByEmail(email: string) {
-        return this.repo.findByEmail(email);
+        return this.user.findByEmail(email);
     }
     
     async deleteUser(id:number){
-        return this.repo.deleteUser(id);
+        return this.user.deleteUser(id);
     }
 
     async updateUser(id: number, data: Partial<User>) {
@@ -56,6 +56,6 @@ export default class UserServices {
             data.password = await bcrypt.hash(data.password, 10);
         }
     
-        return await this.repo.update(id, data);
+        return await this.user.update(id, data);
     }
 }

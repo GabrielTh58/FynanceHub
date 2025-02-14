@@ -18,10 +18,10 @@ model User{
   email String @unique
   password String 
   createdAt DateTime @default(now())
-  transacoes Transacao[] 
+  transacoes Transaction[] 
 } 
 
-model Transacao {
+model Transaction {
   id Int @id @default(autoincrement())
   Type TransactionType
   description String

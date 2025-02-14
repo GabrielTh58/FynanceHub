@@ -1,16 +1,16 @@
 import jwt from 'jsonwebtoken';
-import { UserRepository } from '../models/UserRepositories';
+import { UserModel } from '../models/UserModel';
 import bcrypt from 'bcrypt';
 
 export default class AuthServices {
-    private repo: UserRepository;
+    private user: UserModel;
 
     constructor() {
-        this.repo = new UserRepository();
+        this.user = new UserModel();
     }
 
     async login(email: string, password: string) {
-        const userExists = await this.repo.findByEmail(email);
+        const userExists = await this.user.findByEmail(email);
         if (!userExists) throw new Error('User not found');
 
         console.log(userExists);

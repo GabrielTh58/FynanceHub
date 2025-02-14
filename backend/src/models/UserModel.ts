@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { User } from "../core/users/User";
 
-export class UserRepository {
+export class UserModel {
     private prisma: PrismaClient;
 
     constructor() {

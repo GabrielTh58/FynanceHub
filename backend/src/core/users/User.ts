@@ -1,4 +1,3 @@
-import { Password } from "../shared/Password";
 export class User {
     id: number;
     name: string;
@@ -9,7 +8,7 @@ export class User {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = Password.hashPassword(password);
+        this.password = password;
         this.createdAt = createdAt;
     }
 }
