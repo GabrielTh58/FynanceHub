@@ -1,4 +1,4 @@
-import { PrismaClient, TransactionType } from "@prisma/client";
+import { PrismaClient, TransactionCategory, TransactionType } from "@prisma/client";
 import { Transaction } from "../core/transactions/Transaction";
 
 export class TransactionModel {
@@ -16,6 +16,7 @@ export class TransactionModel {
                 amount: data.amount,
                 type: data.type,
                 description: data.description,
+                category: data.category,
                 userId: data.userId
             }
         })
@@ -34,6 +35,12 @@ export class TransactionModel {
     async findById(id: number): Promise<Transaction | null> {
         return await this.prisma.transaction.findUnique({
             where: { id }
+        })
+    }
+
+    findByCategory(category: TransactionCategory): Promise<Transaction[]> {
+        return this.prisma.transaction.findMany({
+            where: { category }
         })
     }
 

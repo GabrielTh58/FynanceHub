@@ -1,4 +1,4 @@
-import { TransactionType } from "@prisma/client";
+import { TransactionCategory, TransactionType } from "@prisma/client";
 import { TransactionModel } from "../models/TransactionModel";
 import { Transaction } from "../core/transactions/Transaction";
 import { UserModel } from "../models/UserModel";
@@ -11,7 +11,7 @@ export default class TransactionServices {
         this.user = new UserModel();
     }
 
-    async create(type: TransactionType, description: string, amount: number, userId: number) {
+    async create(type: TransactionType, description: string, amount: number,category: TransactionCategory, userId: number) {
         if (amount <= 0) {
             throw new Error("Amount must be a positive integer.");
         }
@@ -27,6 +27,7 @@ export default class TransactionServices {
             description,
             amount,
             userId,
+            category,
             createdAt: new Date(),
         }
         return await this.transaction.create(newTransaction);   

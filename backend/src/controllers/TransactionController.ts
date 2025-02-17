@@ -11,13 +11,13 @@ export default class TransactionController {
 
     async create(req: Request, res: Response) {
         try {
-            const { description, type, amount, userId } = req.body;
+            const { description, type, amount, category, userId } = req.body;
 
-            if (!description || !type || !amount || !userId) {
+            if (!description || !type || !amount || !userId || !category) {
                 return res.status(400).json({ error: "Todos os campos são obrigatórios" });
             }
 
-            const newTransaction = await this.transactionService.create(description, type, +amount, +userId);
+            const newTransaction = await this.transactionService.create(description, type, +amount, category, +userId);
             return res.status(201).json(newTransaction);
         } catch (e: any) {
             console.error("Erro ao criar transação:", e);

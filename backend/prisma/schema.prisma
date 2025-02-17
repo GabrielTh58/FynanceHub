@@ -12,6 +12,20 @@ enum TransactionType {
   EXPENSE
 }
 
+enum TransactionCategory {
+  SALES
+  REFUND
+  INVESTMENT
+  SUPPLIERS
+  OPERATING_COSTS
+  SALARIES
+  MARKETING
+  TAXES
+  EQUIPMENT
+  TRANSPORT
+  OTHER
+}
+
 model User{
   id  Int  @id @default(autoincrement())
   name String
@@ -26,6 +40,7 @@ model Transaction {
   type TransactionType
   description String
   amount Float
+  category TransactionCategory @default(OTHER)
   createdAt DateTime @default(now())
   userId Int  
   user User  @relation(fields: [userId], references: [id])

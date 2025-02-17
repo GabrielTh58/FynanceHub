@@ -8,9 +8,9 @@ export function Header() {
             </div>
 
             <div className="flex items-center ">
-                <div className="flex items-center gap-2 mr-4 p-2 bg-zinc-900 rounded-lg">
+                <div className="flex items-center gap-2 mr-4 px-2 py-1 bg-[#1a1f37] rounded-lg">
                     <IconSearch />
-                    <input type="text" placeholder="Pesquisar" className="outline-none bg-zinc-900"/>
+                    <input type="text" placeholder="Pesquisar" className="outline-none bg-[#1a1f37]"/>
                 </div>
 
                 <div className="flex items-center gap-4">
