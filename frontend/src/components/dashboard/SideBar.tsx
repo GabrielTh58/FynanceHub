@@ -1,12 +1,12 @@
 'use client'
-import { IconHome, IconTransfer, IconUser } from "@tabler/icons-react";
+import { IconHome, IconSettings, IconTransfer } from "@tabler/icons-react";
 import { Logo } from "../shared/Logo";
 import { ItemSidebar } from "./ItemSideBar";
 
 const SideBarItem = [
     {title: 'Dashboard', url: '/dashboard' ,icon: <IconHome />},
-    {title: 'Contas', url: '/dashboard/contas' ,icon: <IconUser />},
     {title: 'Transações', url: '/dashboard/transacoes' ,icon: <IconTransfer />},
+    {title: 'Configurações', url: '/dashboard/configuracoes' ,icon: <IconSettings />},
 ]
 
 export function SideBar(){

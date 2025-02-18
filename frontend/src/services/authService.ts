@@ -1,7 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { TRegisterDataForm } from "@/components/forms/RegisterUserForm"; 
-import { useRouter } from "next/navigation";
 
 // Criar uma instância do Axios com URL base
 const api = axios.create({
@@ -35,8 +34,8 @@ export async function login(email: string, password: string) {
     }
 }
 
-export function logout() {
-    Cookies.remove("token");
-    const router = useRouter();
-    router.push('/auth/login'); 
-}
+// export function logout() {
+//     Cookies.remove("token");
+//     const router = useRouter();
+//     router.push('/auth/login'); 
+// }
