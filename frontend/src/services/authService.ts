@@ -5,7 +5,7 @@ import { TRegisterDataForm } from "@/components/forms/RegisterUserForm";
 
 // Criar uma instância do Axios com URL base
 const api = axios.create({
-    baseURL: "http://localhost:5000/auth"
+    baseURL: "http://localhost:5000/"
 });
 
 export async function registerUser(data: TRegisterDataForm) {

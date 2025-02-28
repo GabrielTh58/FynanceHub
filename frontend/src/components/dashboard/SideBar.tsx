@@ -4,9 +4,9 @@ import { Logo } from "../shared/Logo";
 import { ItemSidebar } from "./ItemSideBar";
 
 const SideBarItem = [
-    {title: 'Dashboard', url: '/dashboard' ,icon: <IconHome />},
-    {title: 'Transações', url: '/dashboard/transactions' ,icon: <IconTransfer />},
-    {title: 'Configurações', url: '/dashboard/settings' ,icon: <IconSettings />},
+    {title: 'Dashboard', url: '/' ,icon: <IconHome />},
+    {title: 'Transações', url: '/transactions' ,icon: <IconTransfer />},
+    {title: 'Configurações', url: '/configuracoes' ,icon: <IconSettings />},
 ]
 
 export function SideBar(){

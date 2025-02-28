@@ -16,9 +16,9 @@ app.get("/", (req: any, res:any) => {
     res.send("Hello World")
 })
 
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
 app.use("/users", userRoutes);
-app.use("/dashboard/transactions", transactionRoutes);
+app.use("/transactions", transactionRoutes);
 
 const PORT = 5000;
 app.listen(PORT, ()=>{

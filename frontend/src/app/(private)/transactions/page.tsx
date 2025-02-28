@@ -10,7 +10,7 @@ import { Transaction } from "@/types/transactionTypes";
 export default function Page() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [transactions, setTransactions] = useState<Transaction[]>();
-
+    // CUSTOM HOOK
     const handleOpenModal = () => {
         setIsModalOpen(true);
     };

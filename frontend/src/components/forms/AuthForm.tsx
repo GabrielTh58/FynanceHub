@@ -35,10 +35,10 @@ export function AuthForm({ type }: { type: tTypeFOrm }) {
         try {
             if (isLogin) {
                 const token = await login(data.email, data.password);
-                if (token) router.push("/dashboard");
+                if (token) router.push("/");
             } else {
                 const userCreated = await registerUser(data);
-                if (userCreated) router.push("/auth/login");
+                if (userCreated) router.push("/login");
             }
         } catch (e) {
             console.error(e);

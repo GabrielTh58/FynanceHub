@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Transaction } from "../types/transactionTypes";
 
-const API_URL = 'http://localhost:5000/dashboard/transactions';
+const API_URL = 'http://localhost:5000/transactions';
 
 export async function createTransaction(description: string, amount: number, type: string, category: string, userId: number) {
     try {
