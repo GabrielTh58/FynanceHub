@@ -11,7 +11,7 @@ export default class TransactionServices {
         this.user = new UserModel();
     }
 
-    async create(type: TransactionType, description: string, amount: number,category: TransactionCategory, userId: number) {
+    async create(description: string,  type: TransactionType, amount: number,category: TransactionCategory, userId: number) {
         if (amount <= 0) {
             throw new Error("Amount must be a positive integer.");
         }
@@ -23,8 +23,8 @@ export default class TransactionServices {
         }
 
         const newTransaction = {
-            type,
             description,
+            type,
             amount,
             userId,
             category,

@@ -5,8 +5,8 @@ import { ItemSidebar } from "./ItemSideBar";
 
 const SideBarItem = [
     {title: 'Dashboard', url: '/dashboard' ,icon: <IconHome />},
-    {title: 'Transações', url: '/dashboard/transacoes' ,icon: <IconTransfer />},
-    {title: 'Configurações', url: '/dashboard/configuracoes' ,icon: <IconSettings />},
+    {title: 'Transações', url: '/dashboard/transactions' ,icon: <IconTransfer />},
+    {title: 'Configurações', url: '/dashboard/settings' ,icon: <IconSettings />},
 ]
 
 export function SideBar(){

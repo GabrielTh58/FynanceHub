@@ -2,7 +2,7 @@ import React from "react"
 
 interface InputFieldsProps {
     label: string
-    placeholder: string
+    placeholder?: string
     name: string
     type: string
     icon?: React.ReactNode

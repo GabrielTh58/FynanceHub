@@ -18,7 +18,7 @@ app.get("/", (req: any, res:any) => {
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-app.use("/transactions", transactionRoutes);
+app.use("/dashboard/transactions", transactionRoutes);
 
 const PORT = 5000;
 app.listen(PORT, ()=>{

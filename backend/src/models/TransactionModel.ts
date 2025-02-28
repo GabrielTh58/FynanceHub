@@ -13,9 +13,9 @@ export class TransactionModel {
         
         return await this.prisma.transaction.create({
             data: {
-                amount: data.amount,
-                type: data.type,
                 description: data.description,
+                type: data.type,
+                amount: data.amount,
                 category: data.category,
                 userId: data.userId
             }

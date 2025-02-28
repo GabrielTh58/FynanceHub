@@ -21,7 +21,7 @@ export default class TransactionController {
             return res.status(201).json(newTransaction);
         } catch (e: any) {
             console.error("Erro ao criar transação:", e);
-            return res.status(500).json({ error: "Erro interno do servidor" });
+            return res.status(500).json({ error: "Erro interno do servidor ao criar transação" });
         }
     }
 

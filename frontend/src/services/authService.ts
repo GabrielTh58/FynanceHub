@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { jwtDecode } from "jwt-decode";
 import { TRegisterDataForm } from "@/components/forms/RegisterUserForm"; 
 
 // Criar uma instância do Axios com URL base
@@ -18,6 +19,10 @@ export async function registerUser(data: TRegisterDataForm) {
     }
 }
 
+interface DecodedToken {
+    id: number; // Certifique-se de que o backend retorna o ID do usuário no token
+}
+
 export async function login(email: string, password: string) {
     try {
         const response = await api.post('/login', { email, password });
@@ -25,7 +30,13 @@ export async function login(email: string, password: string) {
 
         if (token) {
             Cookies.set("token", token, { expires: 7, path: "/" });
-            return token;
+
+            const decoded: DecodedToken = jwtDecode(token);
+            const userId = decoded.id; // Pegando o ID do usuário no token
+
+            Cookies.set("userId", String(userId), { expires: 7, path: "/" });
+
+            return userId;
         }
         return null;
     } catch (error) {

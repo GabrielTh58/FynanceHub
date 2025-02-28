@@ -19,7 +19,7 @@ export default class AuthServices {
         if (!loginCorrect) throw new Error('Credenciais incorretas');
 
               
-        const token = jwt.sign({ email, id: userExists.id }, process.env.ACCESS_TOKEN_SECRET as string, { expiresIn: '1d' });
+        const token = jwt.sign({ id: userExists.id }, process.env.ACCESS_TOKEN_SECRET as string, { expiresIn: '1d' });
 
         console.log("Generated Token:", token); // Teste se o token está sendo gerado corretamente
 

@@ -10,7 +10,7 @@ interface AnalyticsCardsProps{
 export function AnalyticsCards({title, value, icon}: AnalyticsCardsProps){
 
     return(
-        <div className="flex-1 p-5 bg-gradient-to-br from-[#060B26]/[0.74] to-[#1A1F37]/[0.50] rounded-lg">
+        <div className="flex-1 p-5 bg-custom-gradient-card rounded-lg">
             <div className="flex items-center justify-between">
                 <div>
                     <h3 className="text-xs text-zinc-400 mb-2">{title}</h3>

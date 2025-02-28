@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -17,8 +12,9 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
+
 
 input:-webkit-autofill {
   background-color: transparent;
@@ -28,7 +24,15 @@ input:-webkit-autofill {
 }
 
 @layer components {
-  .transaction-button-gradient {
-    background: linear-gradient(to right, #121241, #2E2EA7);
+  .bg-custom-gradient {
+    @apply bg-gradient-to-r from-[#121241] to-[#2E2EA7];
+  }
+
+  .bg-custom-gradient-card {
+    @apply  bg-gradient-to-br from-[#060B26]/[0.74] to-[#1A1F37]/[0.50]
+  }
+
+  .primary-gradient{
+    @apply bg-gradient-to-r from-[#0075FF]/[0.8] to-[#004699]
   }
 }

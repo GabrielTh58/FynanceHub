@@ -33,9 +33,7 @@ export function RegisterUserForm() {
         }
     } 
 
-    return (
-        <div className="w-1/3 flex flex-col items-center justify-center rounded-lg bg-zinc-900 px-14 py-6">
-            <h2 className="text-lg font-bold mb-4">Cadastrar</h2>
+    return (      
 
             <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4 text-xl mb-12">
                 <div>
@@ -69,7 +67,6 @@ export function RegisterUserForm() {
                 <ButtonForm>Cadastrar-se</ButtonForm>
             </form>
             
-            <p className="text-xl text-zinc-400">Ja possui uma conta? <Link href="/auth/login" className="text-green-600 hover:text-green-700">Faça Login</Link></p>
-        </div>
+
     )
 }
