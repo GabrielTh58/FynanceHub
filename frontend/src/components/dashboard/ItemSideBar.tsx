@@ -1,11 +1,10 @@
-import { IconCode } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface ItemSidebarProps {
   title: string;
   url: string;
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
 }
 
 export function ItemSidebar({ title, url, icon }: ItemSidebarProps) {
@@ -13,13 +12,20 @@ export function ItemSidebar({ title, url, icon }: ItemSidebarProps) {
   const isActive = pathname === url;
 
   return (
-    <Link
-      href={url}
-      className={`w-full flex items-center gap-2 text-sm rounded-md hover:bg-slate-900 px-4 py-4 transition 
-        ${isActive ? "bg-[#1a1f37]" : ""}
-    `}>
-      {icon ?? <IconCode />}
-      {title}
-    </Link>
+    <ul>
+      <li>
+        <Link
+          href={url}
+          className={`w-full flex items-center gap-2 text-sm rounded-2xl px-4 py-3 transition hover:bg-tertiary
+            ${isActive ? "bg-tertiary" : ""}
+        `}>
+          <div className={`p-1 rounded-lg ${isActive ? "bg-blue-600" : "bg-tertiary"}`}>
+            {icon}
+          </div>
+          <span className="text-sm text-white font-medium">{title}</span>
+        </Link>
+
+      </li>
+    </ul>
   );
 }

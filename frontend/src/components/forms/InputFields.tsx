@@ -13,17 +13,17 @@ export function InputFields({ label, placeholder, name, type, icon, register }: 
 
     return (
         <>
-            <label htmlFor={name} className="text-zinc-400">{label}</label>
-            <div className="flex justify-between items-center rounded-lg bg-zinc-950 px-2">
-            <input 
-                {...register}
-                name={name}
-                type={type}
-                placeholder={placeholder}
-                className="w-full flex bg-zinc-950 py-2 rounded-lg px-2 outline-none" />
-                {icon && (
-                    icon                
-                )}
+            <label htmlFor={name} className="text-base font-medium text-white">{label}</label>
+            <div className="flex justify-between items-center border border-slate-700 rounded-md px-2 mt-1">
+                <input 
+                    {...register}
+                    name={name}
+                    type={type}
+                    placeholder={placeholder}
+                    className="w-full flex bg-transparent py-2 rounded-lg px-2 outline-none placeholder:text-sm placeholder:text-zinc-500" />
+                    {icon && (
+                        icon                
+                    )}
             </div>
         </>
     )
