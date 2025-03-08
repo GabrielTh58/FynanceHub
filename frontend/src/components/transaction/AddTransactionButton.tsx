@@ -5,8 +5,6 @@ interface TransactionButtonProps {
 }
 
 export function AddTransactionButton({ children, icon, setIsModalOpen }: TransactionButtonProps) {
-
-
   return (
     <button onClick={setIsModalOpen}
       className="flex gap-2 items-center text-sm text-white py-1.5 px-4 rounded-lg

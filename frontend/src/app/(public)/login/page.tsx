@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { AuthForm } from "@/components/forms/AuthForm";
+import { AuthForm } from "@/components/auth_forms/AuthForm";
 
 export default function Page() {
     return (
         <>
-            <div className="text-center">
+            <div className="text-center text-white">
                 <h2 className="text-3xl font-bold mb-1">Bem Vindo de Volta!</h2>
                 <p className="text-base text-zinc-400">Entre com sua conta!</p>
             </div>

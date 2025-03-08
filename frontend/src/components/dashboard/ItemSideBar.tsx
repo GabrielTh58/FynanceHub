@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -5,16 +7,25 @@ interface ItemSidebarProps {
   title: string;
   url: string;
   icon: React.ReactNode;
+  logout?: () => void
 }
 
-export function ItemSidebar({ title, url, icon }: ItemSidebarProps) {
+export function ItemSidebar({ title, url, icon, logout }: ItemSidebarProps) {
   const pathname = usePathname();
   const isActive = pathname === url;
+
+  function handleClick(e: React.MouseEvent) {
+    if (logout) {
+      e.preventDefault()
+      logout()
+    }
+  }
 
   return (
     <ul>
       <li>
         <Link
+          onClick={handleClick}
           href={url}
           className={`w-full flex items-center gap-2 text-sm rounded-2xl px-4 py-3 transition hover:bg-tertiary
             ${isActive ? "bg-tertiary" : ""}
@@ -22,6 +33,7 @@ export function ItemSidebar({ title, url, icon }: ItemSidebarProps) {
           <div className={`p-1 rounded-lg ${isActive ? "bg-blue-600" : "bg-tertiary"}`}>
             {icon}
           </div>
+
           <span className="text-sm text-white font-medium">{title}</span>
         </Link>
 
