@@ -1,11 +1,43 @@
 'use client'
+
 import { IncomeExpenseChart } from "@/components/charts/IncomeExpenseChart";
 import { ExpenseByCategory } from "@/components/charts/ExpenseByCategory";
 import { AnalyticsCards } from "@/components/dashboard/AnalyticsCards";
 import { LastTransactions } from "@/components/dashboard/LastTransactions";
 import { IconArrowRight, IconCreditCardPay, IconCreditCardRefund, IconWallet } from "@tabler/icons-react";
+import Link from "next/link";
+import { getUser } from "@/services/userServices";
+import { useEffect, useState } from "react";
+import { useMonthlyReset } from "@/hooks/useMonthlyReset";
+import { Transaction } from "@/types/transactionTypes";
 
 export default function Page() {
+    const [user, setUser] = useState<string | null>(null);
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+    useEffect(() => {
+        async function fetchUser() {
+            const data = await getUser();
+            if (data) {
+                setUser(data.name);
+            }
+        }
+        fetchUser();
+    }, []);
+
+    useEffect(() => {
+        const storedTransactions = localStorage.getItem("transactions");
+        if (storedTransactions) {
+            setTransactions(JSON.parse(storedTransactions));
+        }
+    }, []);
+
+    useEffect(() => {
+        if (transactions.length > 0) {
+            useMonthlyReset({ lastTransactions: transactions, setLastTransactions: setTransactions });
+        }
+    }, [transactions])
+
     return (
         <>
             <section className="flex items-center gap-4 mb-5">
@@ -20,15 +52,17 @@ export default function Page() {
                         <div className="col-span-2 flex flex-col flex-1">
                             <div className="flex flex-col items-start ">
                                 <p className="text-zinc-400 text-sm">Bem vindo de volta</p>
-                                <p className="font-bold text-2xl mb-4 mt-2">Gabriel Correia</p>
+                                <p className="font-bold text-2xl mb-4 mt-2">
+                                    {user}
+                                </p>
                                 <p className="text-zinc-400 text-sm">Fico feliz em vê-lo novamente</p>
                             </div>
                         </div>
 
-                        <button className="w-36 flex justify-between items-center text-xs hover:text-blue-400">
+                        <Link href="/transactions" className="w-1/5 flex justify-between items-center text-sm hover:text-blue-400">
                             Registrar Transação
                             <IconArrowRight className="w-4 h-4" />
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="flex flex-col col-span-2 row-span-5 w-full bg-custom-gradient-card rounded-2xl p-5">
@@ -39,6 +73,7 @@ export default function Page() {
                         <LastTransactions />
                     </div>
                 </div>
+                
                 <div className="grid grid-cols-5 gap-4">
                     <div className="col-span-3 chart-gradient shadow-lg rounded-2xl">
                         <IncomeExpenseChart />                     

@@ -20,7 +20,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-import { useTransactionChartData } from "@/hooks/useTransactionChartData";
+import { useIncomeData } from "@/hooks/useIncomeData";
 
 const chartConfig = {
   expense: {
@@ -34,19 +34,18 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function IncomeExpenseChart() {
-  const { chartData } = useTransactionChartData();
+  const { incomeChartData } = useIncomeData();
 
   return (
     <Card>
-      <CardHeader className="mb-4">
+      <CardHeader>
         <CardTitle>Receitas X Despesas</CardTitle>
         <CardDescription>Desempenho financeiro dos últimos 30 dias</CardDescription>
       </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
+      <CardContent  className="h-80">
+        <ChartContainer config={chartConfig}  className="h-80 w-full py-4">
           <AreaChart
-            accessibilityLayer
-            data={chartData}
+            data={[...incomeChartData].reverse()}
             margin={{
               left: 12,
               right: 12,
@@ -55,7 +54,6 @@ export function IncomeExpenseChart() {
             <CartesianGrid vertical={false} />
 
             <XAxis
-              className="text-base"
               dataKey="date"
               tickLine={false}
               axisLine={false}
@@ -107,18 +105,6 @@ export function IncomeExpenseChart() {
           </AreaChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              January - June 2024
-            </div>
-          </div>
-        </div>
-      </CardFooter>
     </Card>
-  );
+  )
 }

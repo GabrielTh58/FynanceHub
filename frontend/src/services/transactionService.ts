@@ -62,7 +62,9 @@ export async function getTransactionSummary() {
         return acc;
     }, { income: 0, expense: 0, total: 0 })
 
+    console.log(summary);
     return summary
+    
 }
 
 export async function getTransactionHistory() {

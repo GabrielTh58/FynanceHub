@@ -1,8 +1,5 @@
-"use client"
-
 import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
-
 import {
   Card,
   CardContent,
@@ -15,17 +12,8 @@ import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart"
-
-const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+import { useCategoryExpense } from "@/hooks/useCategoryExpense"
 
 const chartConfig = {
   desktop: {
@@ -35,6 +23,8 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ExpenseByCategory() {
+  const { categoryExpense } = useCategoryExpense()
+
   return (
     <Card>
       <CardHeader>
@@ -45,24 +35,37 @@ export function ExpenseByCategory() {
         <ChartContainer config={chartConfig}>
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={categoryExpense}
             margin={{
               top: 20,
             }}
           >
             <CartesianGrid vertical={false} />
+
             <XAxis
-              dataKey="month"
+              dataKey="category"
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
+              tickFormatter={(value) => value.slice(0, 5)}
             />
+
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={({ active, payload }) => {
+                if (!active || !payload || payload.length === 0) return null;
+
+                return (
+                  <div className="text-white bg-slate-900 px-2 py-1 shadow-md rounded-md">
+                    <p className="text-base">
+                      R$ {Number(payload[0].value).toFixed(2)}
+                    </p>
+                  </div>
+                );
+              }}
             />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8}>
+
+            <Bar dataKey="amount" fill="var(--color-desktop)" radius={8}>
               <LabelList
                 position="top"
                 offset={12}
@@ -73,14 +76,7 @@ export function ExpenseByCategory() {
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm mt-4">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
-      </CardFooter>
+     
     </Card>
   )
 }

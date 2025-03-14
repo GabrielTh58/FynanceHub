@@ -1,10 +1,10 @@
 'use client'
 
 import { IconHome, IconLogout, IconSettings, IconTransfer } from "@tabler/icons-react";
-import { Logo } from "../shared/Logo";
-import { ItemSidebar } from "./ItemSideBar";
+import { Logo } from "@/components/ui/Logo";
 import { logout } from "@/services/authService";
 import { useRouter } from "next/navigation";
+import { ItemSidebar } from "./ItemSideBar";
 
 
 

@@ -1,7 +1,7 @@
+import { useModalForm } from "@/hooks/useTransactionForm";
 import { InputFields } from "../auth_forms/InputFields";
 import { ButtonForm } from "../shared/ButtonForm";
 import { IconX } from "@tabler/icons-react";
-import { useModalForm } from "@/hooks/useTransactionForm";
 import { useState } from "react";
 
 interface ModalFormProps {

@@ -1,5 +1,5 @@
-import { SideBar } from "@/components/dashboard/SideBar";
-import { Header } from "@/components/Header";
+import { SideBar } from "@/components/dashboard/sidebar/SideBar";
+import { Header } from "@/components/layout/Header";
 import React from "react";
 
 export default function Layout({ children }: any) {

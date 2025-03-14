@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from "/public/logo.png";
 import backImage from "/public/bg-login.png";
-import { Logo } from "@/components/shared/Logo";
+import { Logo } from "@/components/ui/Logo";
 export default function Layout({ children }: any) {
     return (
         <section className="h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"

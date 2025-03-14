@@ -2,7 +2,7 @@ import { getTransactionHistory } from "@/services/transactionService";
 import { useEffect, useState } from "react";
 
 export function useHistoryTransaction() {
-    const [lastTransactions, setlastTransactions] = useState([]);
+    const [lastTransactions, setLastTransactions] = useState([]);
 
     useEffect(() => {
 
@@ -10,7 +10,7 @@ export function useHistoryTransaction() {
             try {
                 const data = await getTransactionHistory();
                 if (data) {
-                    setlastTransactions(data);
+                    setLastTransactions(data);
                 }
             } catch (e: any) {
                 console.error(e)
@@ -20,5 +20,5 @@ export function useHistoryTransaction() {
         fetchTransactions();
     }, [])
 
-    return { lastTransactions }
+    return { lastTransactions}
 }
