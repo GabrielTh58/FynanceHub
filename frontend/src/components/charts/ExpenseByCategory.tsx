@@ -1,4 +1,3 @@
-import { TrendingUp } from "lucide-react"
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
 import {
   Card,
@@ -15,12 +14,28 @@ import {
 } from "@/components/ui/chart"
 import { useCategoryExpense } from "@/hooks/useCategoryExpense"
 
+// Configuração do gráfico
 const chartConfig = {
   desktop: {
     label: "Desktop",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
+
+// Tradução das categorias
+const TransactionCategoryPT: Record<string, string> = {
+  SALES: "Vendas",
+  REFUND: "Reembolso",
+  INVESTMENT: "Investimentos",
+  SUPPLIERS: "Fornecedores",
+  OPERATING_COSTS: "Custos Operacionais",
+  SALARIES: "Salários",
+  MARKETING: "Marketing",
+  TAXES: "Impostos",
+  EQUIPMENT: "Equipamentos",
+  TRANSPORT: "Transporte",
+  OTHER: "Outros",
+}
 
 export function ExpenseByCategory() {
   const { categoryExpense } = useCategoryExpense()
@@ -47,7 +62,7 @@ export function ExpenseByCategory() {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => value.slice(0, 5)}
+              tickFormatter={(value) => TransactionCategoryPT[value] || value}
             />
 
             <ChartTooltip
@@ -76,7 +91,6 @@ export function ExpenseByCategory() {
           </BarChart>
         </ChartContainer>
       </CardContent>
-     
     </Card>
   )
 }

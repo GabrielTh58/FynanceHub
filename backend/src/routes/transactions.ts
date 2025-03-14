@@ -17,10 +17,10 @@ router.get("/", async (req, res) => {
     try {
         await transactionController.findAll(req, res);
     } catch (e) {
-        console.error("Erro ao buscar todas as transações:", e);
+        console.error("Erro ao buscar transações:", e);
         res.status(500).json({ error: "Erro interno do servidor" });
     }
-});
+})
 
 router.get("/type/:type", async (req, res) => {
     try {

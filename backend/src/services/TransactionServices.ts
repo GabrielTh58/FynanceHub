@@ -38,9 +38,10 @@ export default class TransactionServices {
 
     }
 
-    async findAll(){
-        return await this.transaction.findAll();
+    async findAll(userId: number) {
+        return await this.transaction.findAll(userId); // Agora busca apenas do usuário logado
     }
+    
 
     async findByType(type: TransactionType){
         return await this.transaction.findByType(type);

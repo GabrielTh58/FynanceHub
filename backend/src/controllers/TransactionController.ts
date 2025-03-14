@@ -27,15 +27,21 @@ export default class TransactionController {
 
     async findAll(req: Request, res: Response) {
         try {
-            const transactions = await this.transactionService.findAll();
-
+            const userId = Number(req.query.userId);
+    
+            if (!userId || isNaN(userId) || userId <= 0) {
+                return res.status(400).json({ error: "ID do usuário inválido" });
+            }
+    
+            const transactions = await this.transactionService.findAll(userId);
+    
             return res.status(200).json(transactions);
         } catch (e: any) {
             console.error("Erro ao buscar transações:", e);
             return res.status(500).json({ error: "Erro interno do servidor" });
         }
     }
-
+    
     async findById(req: Request, res: Response) {
         try {
             const id = parseInt(req.params.id);

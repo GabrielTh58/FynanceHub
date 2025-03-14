@@ -22,9 +22,11 @@ export class TransactionModel {
         })
     }
 
-    async findAll(): Promise<Transaction[]> {
-        return await this.prisma.transaction.findMany();
-    }
+    async findAll(userId: number) {
+        return await this.prisma.transaction.findMany({
+            where: { userId },
+        })
+    }    
 
     async findByType(type: TransactionType): Promise<Transaction[]> {
         return await this.prisma.transaction.findMany({
