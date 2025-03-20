@@ -40,4 +40,13 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+router.post("/reset-password", async (req, res) => {
+    try{
+        await userController.resetPassword(req, res);
+    }catch(error){
+        console.error("Erro ao redefinir senha:", error);
+        res.status(500).json({ error: "Erro interno do servidor" });
+    }
+})
+
 export default router;

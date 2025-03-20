@@ -13,6 +13,7 @@ import {
   ChartTooltip,
 } from "@/components/ui/chart"
 import { useCategoryExpense } from "@/hooks/useCategoryExpense"
+import { TransactionCategory, translateCategory } from "@/utils/transactionsUtils"
 
 // Configuração do gráfico
 const chartConfig = {
@@ -21,21 +22,6 @@ const chartConfig = {
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
-
-// Tradução das categorias
-const TransactionCategoryPT: Record<string, string> = {
-  SALES: "Vendas",
-  REFUND: "Reembolso",
-  INVESTMENT: "Investimentos",
-  SUPPLIERS: "Fornecedores",
-  OPERATING_COSTS: "Custos Operacionais",
-  SALARIES: "Salários",
-  MARKETING: "Marketing",
-  TAXES: "Impostos",
-  EQUIPMENT: "Equipamentos",
-  TRANSPORT: "Transporte",
-  OTHER: "Outros",
-}
 
 export function ExpenseByCategory() {
   const { categoryExpense } = useCategoryExpense()
@@ -62,7 +48,7 @@ export function ExpenseByCategory() {
               tickLine={false}
               tickMargin={10}
               axisLine={false}
-              tickFormatter={(value) => TransactionCategoryPT[value] || value}
+              tickFormatter={(value: keyof typeof TransactionCategory) => translateCategory(value)}
             />
 
             <ChartTooltip

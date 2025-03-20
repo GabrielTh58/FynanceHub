@@ -58,4 +58,23 @@ export default class UserServices {
     
         return await this.user.update(id, data);
     }
+
+    async resetPassword(email: string, currentPassword: string, newPassword: string) {
+        const user = await this.user.findByEmail(email);
+        
+        if (!user) return null; 
+        
+        const isPasswordCorrect = await bcrypt.compare(currentPassword, user.password);
+        
+        if (!isPasswordCorrect) {
+            throw new Error("Usuário ou senha inválidos")
+        }
+    
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+    
+        const updatedUser = await this.user.update(user.id, { password: hashedPassword });
+    
+        return updatedUser ? true : false
+    }
+    
 }

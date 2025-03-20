@@ -13,7 +13,7 @@ export function useTransaction() {
             }
         }
         fetchTransactions();
-    }, []);
+    }, [transactions]);
 
-    return { transactions }
+    return { transactions, setTransactions };
 }

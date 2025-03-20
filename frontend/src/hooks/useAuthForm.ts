@@ -16,7 +16,8 @@ const formSchemas = {
     })
 };
 
-type tTypeForm = "login" | "register";
+type tTypeForm = "login" | "register"
+
 export function useAuthForm({ type }: { type: tTypeForm }) {
     const router = useRouter();
     const isLogin = type === "login";

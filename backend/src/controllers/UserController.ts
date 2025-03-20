@@ -108,5 +108,24 @@ export default class UserController{
         }
     }
 
-   
+   async resetPassword(req: Request, res: Response) {
+        try{
+            const { email, currentPassword, newPassword } = req.body;
+
+            if(!email || !currentPassword || !newPassword){
+                return res.status(400).json({error: "Todos os campos sao obrigatorio"})
+            }
+
+            const resetPassword = await this.userService.resetPassword(email, currentPassword, newPassword);
+
+            if(!resetPassword){
+                return res.status(404).json({error: "Usuario nao encontrado"})
+            }
+
+            return res.status(200).json({message: "Senha redefinida com sucesso"})            
+        }catch(e){
+            console.error("Erro ao redefinir senha:", e);
+            return res.status(500).json({ error: "Erro interno do servidor" });     
+        }
+   }
 }

@@ -1,8 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { createTransaction } from "@/services/transactionService";
+import { useTransaction } from "./useTransaction";
 
 
 const modalFormSchema = z.object({
@@ -15,34 +15,27 @@ const modalFormSchema = z.object({
     ]),
 });
 
-type TModalForm = z.infer<typeof modalFormSchema>;
+type TModalForm = z.infer<typeof modalFormSchema>
 
-
-export function useModalForm(setIsModalOpen: () => void) {
+export function useModalTransactionForm(setIsModalOpen: () => void) {
+    const { transactions, setTransactions } = useTransaction()
+    console.log(transactions);
     
     const { register, handleSubmit, formState: { errors } } = useForm<TModalForm>({
         resolver: zodResolver(modalFormSchema)
-    });
-
-    const userId = Cookies.get("userId");
-    const parsedUserId = userId ? Number(userId) : null;
+    })
 
     async function handleCreateTransaction(data: TModalForm) {
-        if (!parsedUserId || isNaN(parsedUserId)) {
-            return alert("Usuário não autenticado!");
-        }
-        console.log(data);
-
         try {
             const transactionCreated = await createTransaction(
                 data.description,
                 data.amount,
                 data.type,
-                data.category,
-                parsedUserId
+                data.category,                
             );
 
             if (transactionCreated) {
+                setTransactions([...(transactions ?? []), transactionCreated])
                 setIsModalOpen();
             }
         } catch (e) {
@@ -51,10 +44,8 @@ export function useModalForm(setIsModalOpen: () => void) {
         }
     }
 
-    function handleClose(e: React.MouseEvent) {
-        if (e.target === e.currentTarget) {
-            setIsModalOpen();
-        }
+    function handleClose() {
+        setIsModalOpen()      
     }
 
     return { register, handleSubmit, errors, handleCreateTransaction, handleClose };

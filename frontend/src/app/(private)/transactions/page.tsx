@@ -1,19 +1,27 @@
-"use client";
-import { AddTransactionButton } from "@/components/transaction/AddTransactionButton";
-import { IconAdjustmentsHorizontal, IconPlus } from "@tabler/icons-react";
-import { FilterButton } from "@/components/shared/FilterButton";
-import { useState } from "react";
-import { ModalForm } from "@/components/transaction/ModalForm";
-import { Transaction } from "@/types/transactionTypes";
-import { useTransaction } from "@/hooks/useTransaction";
-import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils";
+"use client"
+
+import { AddTransactionButton } from "@/components/transaction/AddTransactionButton"
+import { IconAdjustmentsHorizontal, IconPlus, IconX } from "@tabler/icons-react"
+import { FilterButton } from "@/components/shared/FilterButton"
+import { useEffect, useState } from "react"
+import { ModalTransactionForm } from "@/components/transaction/ModalTransactionForm"
+import { Transaction } from "@/types/transactionTypes"
+import { useTransaction } from "@/hooks/useTransaction"
+import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils"
+import { deleteTransaction } from "@/services/transactionService"
 
 export default function Page() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const { transactions } = useTransaction();
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const { transactions } = useTransaction()
+
 
     const handleOpenModal = () => setIsModalOpen(true);
     const handleCloseModal = () => setIsModalOpen(false);
+    const handleDeleteTransaction = async (id: number) => {
+        const response = await deleteTransaction(id)
+        console.log(response);
+    }
+
 
     return (
         <section className="
@@ -44,7 +52,8 @@ export default function Page() {
                             <th className="w-1/5 text-left py-4 px-4">Categoria</th>
                             <th className="w-1/5 text-left py-4 px-4">Valor</th>
                             <th className="w-1/5 text-left py-4 px-4">Data</th>
-                            <th className="w-1/5 text-left py-4 px-4">Tipo</th>
+                            <th className="w-1/5 text-left py-4 px-6">Tipo</th>
+                            <th className="w-[5%] text-left py-4 px-4"></th>
                         </tr>
                     </thead>
 
@@ -71,14 +80,22 @@ export default function Page() {
                                     }>
                                         {translateTransactionType(transaction.type)}
                                     </span>
-                                </td>
+                                </td>        
+                                <td className="w-[5%] py-5 px-4">
+                                    <button
+                                        onClick={() => handleDeleteTransaction(transaction.id)}
+                                        className="rounded-full p-[1px] cursor-pointer hover:bg-red-600"                                    
+                                    >
+                                        <IconX width={16} height={16} />
+                                    </button>
+                                </td>                        
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
 
-            {isModalOpen && <ModalForm setIsModalOpen={handleCloseModal} />}
+            {isModalOpen && <ModalTransactionForm setIsModalOpen={handleCloseModal} />}
         </section>
     );
 }

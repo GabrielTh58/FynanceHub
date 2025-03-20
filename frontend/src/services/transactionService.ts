@@ -133,4 +133,18 @@ export async function getTransactionHistory() {
         .slice(0, 4);
 }
 
-export async function deleteTransaction(id: number) { }
+export async function deleteTransaction(id: number) {
+    try {
+        const response = await axios.delete(`${API_URL}/${id}`);
+
+        return response.data
+    } catch (e: any) {
+        if (axios.isAxiosError(e)) {
+            console.error("Erro ao excluir transação:", e.response?.data || e.message);
+        } else {
+            console.error("Erro desconhecido ao excluir transação:", e);
+        }
+
+        return null
+    }
+}
