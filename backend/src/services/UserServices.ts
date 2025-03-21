@@ -26,7 +26,7 @@ export default class UserServices {
             password: hashedPassword,
             name,
             createdAt: new Date(),
-        });
+        })
 
         if (!newUser.id) {
             throw new Error("Falha ao criar o usuário. Id não fornecido.");

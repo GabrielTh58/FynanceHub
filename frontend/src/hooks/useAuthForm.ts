@@ -3,43 +3,49 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { toast } from "react-toastify";
+
+export type tTypeForm = "login" | "register";
+
 
 const formSchemas = {
     login: z.object({
-        email: z.string().email(),
-        password: z.string().min(6)
+        email: z.string().email("Digite um email válido"),
+        password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
     }),
     register: z.object({
-        name: z.string().min(3, { message: "O nome deve ter pelo menos 3 caracteres" }),
-        email: z.string().email({ message: "Digite um email válido" }),
-        password: z.string().min(6, { message: "A senha deve ter pelo menos 6 caracteres" })
-    })
-};
+        name: z.string().min(3, "O nome deve ter pelo menos 3 caracteres"),
+        email: z.string().email("Digite um email válido"),
+        password: z.string().min(6, "A senha deve ter pelo menos 6 caracteres"),
+    }),
+} as const;
 
-type tTypeForm = "login" | "register"
+type FormData<T extends tTypeForm> = z.infer<(typeof formSchemas)[T]>;
 
 export function useAuthForm({ type }: { type: tTypeForm }) {
     const router = useRouter();
     const isLogin = type === "login";
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(formSchemas[type])
-    });
+    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData<typeof type>>({
+        resolver: zodResolver(formSchemas[type]),
+        mode: "onBlur",
+    })
 
-    async function onSubmit(data: any) {
+    const onSubmit = async (data: FormData<typeof type>) => {
         try {
-            if (isLogin) {
-                const token = await login(data.email, data.password);
-                if (token) router.push("/");
-            } else {
-                const userCreated = await registerUser(data);
-                if (userCreated) router.push("/login");
+            const response = isLogin
+                ? await login(data.email, data.password)
+                : await registerUser(data as FormData<"register">);
+
+            if (response) {
+                toast.success(isLogin ? "Login realizado com sucesso!" : "Cadastro realizado!");
+                router.push(isLogin ? "/" : "/login");
             }
-        } catch (e) {
-            console.error(e);
-            alert(isLogin ? "Erro ao logar" : "Erro ao cadastrar-se");
+        } catch (e: any) {
+            console.error("Erro na autenticação:", e);
+            toast.error(e.response?.data?.error || "Credenciais inválidas.");
         }
     }
-    return { isLogin, register, handleSubmit, onSubmit, errors };
 
+    return { isLogin, register, handleSubmit, onSubmit, errors, isSubmitting };
 }

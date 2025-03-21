@@ -1,4 +1,5 @@
 'use client'
+
 import { IconEye, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
 import { InputFields } from "./InputFields";
@@ -21,7 +22,6 @@ export function AuthForm({ type }: { type: tTypeForm }) {
                         name="name"
                         type="text"
                     />
-                    {errors.name && <span className="text-sm text-red-500">{String(errors.name.message)}</span>}
                 </div>
             )}
 
@@ -47,6 +47,7 @@ export function AuthForm({ type }: { type: tTypeForm }) {
                     icon={<IconEye stroke={1} />}
                 />
                 {errors.password && <span className="text-sm text-red-500">{String(errors.password.message)}</span>}
+
                 {isLogin && (
                     <p>
                         <Link className="self-end text-xs text-zinc-400 mt-2" href="/auth/forgot-password">Esqueceu sua senha?</Link>

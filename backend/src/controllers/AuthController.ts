@@ -18,12 +18,13 @@ export default class AuthController {
             const token = await this.authService.login(email, password);
 
             if(!token){
-                res.status(401).json({error: "Credenciais invalidas"});
+                return res.status(401).json({error: "Credenciais invalidas"});
             }
 
             return res.status(200).json({token})
-        }catch(e){
+        }catch(e: any) {
             console.error("Erro ao realizar login:", e);
+            return res.status(500).json({ error: e.message || "Erro interno do servidor" });    
         }
     }
 }
