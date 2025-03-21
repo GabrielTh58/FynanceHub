@@ -18,15 +18,10 @@ export default function Page() {
             </div>
 
 
-            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-slate-900 mt-5 mb-3">
-                <Link href="#">G</Link>
-            </div>
-
             <div className="text-sm">
                 <p>Ainda não possui uma conta?
                     <Link className="font-bold text-blue-500 hover:text-blue-700 " href="/register"> Cadastre-se <span className="underline">aqui</span></Link>
                 </p>
-                <p className="text-zinc-400">Ou faça login pelo Google clicando no G acima</p>
             </div>
         </>
     )

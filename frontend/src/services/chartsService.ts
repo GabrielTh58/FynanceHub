@@ -1,6 +1,7 @@
 import { TCategoryExpenseChartData, TIncomeChartData } from "@/types/chartTypes";
 import { listAllTransactions } from "./transactionService";
 import { Transaction } from "@/types/transactionTypes";
+import { expenseCategories } from "@/utils/expenseCategories";
 
 interface TransactionChartData {
   createdAt: string;
@@ -57,25 +58,23 @@ export async function getExpenseByCategoryData(): Promise<TCategoryExpenseChartD
 
   const filteredTransactions = transactions.filter((transaction: Transaction) => {
     const transactionDate = new Date(transaction.createdAt)
-    return transactionDate >= lastMonth;
-  })
-  
+    return transactionDate >= lastMonth && expenseCategories.has(transaction.category)
+  });
+
   const chartDataObj = filteredTransactions.reduce((acc: Record<string, TCategoryExpenseChartData>, transaction: Transaction) => {
     if (!acc[transaction.category]) {
       acc[transaction.category] = {
         category: transaction.category,
         amount: 0
-      }    
+      };    
     }
     acc[transaction.category].amount += transaction.amount;
     return acc;
-  } , {});    
+  }, {});    
 
   const sortedChartData = (a: any, b: any) => b.amount - a.amount,
-  chartDataArray = Object.values(chartDataObj).sort(sortedChartData) as TCategoryExpenseChartData[]
+        chartDataArray = Object.values(chartDataObj).sort(sortedChartData) as TCategoryExpenseChartData[];
 
-  console.log(chartDataArray);  
-  return chartDataArray
+  console.log(chartDataArray);
+  return chartDataArray;
 }
-
-// add somente despesas

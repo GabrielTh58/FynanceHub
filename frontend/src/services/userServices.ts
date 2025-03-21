@@ -27,3 +27,17 @@ export async function resetPassword(email: string, currentPassword: string, newP
         throw new Error(e.response?.data?.error || "Erro ao redefinir senha");
     }
 }
+
+export async function deleteUser(id:number){
+    try{
+        const response = await axios.delete(`${baseURL}/${id}`)
+        if(response.status === 200){
+            Cookies.remove("token");
+        }
+        return response.data
+    }catch (e: any) {
+        console.error("Erro ao deletar usuário:", e.response?.data || e.message)
+        throw new Error(e.response?.data?.error || "Erro ao deletar usuário")
+    }
+}
+
