@@ -18,4 +18,3 @@ interface TransactionButtonProps {
     );
   }
   
-  // ARRENDODAMENTO LIGADO AO VAR RADIYUS

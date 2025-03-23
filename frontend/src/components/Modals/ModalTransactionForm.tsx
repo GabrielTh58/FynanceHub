@@ -1,10 +1,10 @@
 import { useModalTransactionForm } from "@/hooks/useModalTransactionForm";
-import { InputFields } from "../auth_forms/InputFields";
-import { ButtonForm } from "../shared/ButtonForm";
+import { InputFields } from "../forms/InputFields";
+import { ButtonForm } from "../Buttons/ButtonForm";
 import { IconX } from "@tabler/icons-react";
 import { useState } from "react";
 import { TransactionCategory } from "@/utils/transactionsUtils";
-import { Modal } from "../shared/Modal";
+import { Modal } from "./Modal";
 
 interface ModalFormProps {
     setIsModalOpen: () => void;

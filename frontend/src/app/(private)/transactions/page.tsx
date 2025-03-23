@@ -1,10 +1,10 @@
 "use client"
 
-import { AddTransactionButton } from "@/components/transaction/AddTransactionButton"
+import { AddTransactionButton } from "@/components/Buttons/AddTransactionButton"
 import { IconAdjustmentsHorizontal, IconPlus, IconX } from "@tabler/icons-react"
-import { FilterButton } from "@/components/shared/FilterButton"
+import { FilterButton } from "@/components/Buttons/FilterButton"
 import { useEffect, useState } from "react"
-import { ModalTransactionForm } from "@/components/transaction/ModalTransactionForm"
+import { ModalTransactionForm } from "@/components/Modals/ModalTransactionForm"
 import { Transaction } from "@/types/transactionTypes"
 import { useTransaction } from "@/hooks/useTransaction"
 import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils"
