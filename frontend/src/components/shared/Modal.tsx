@@ -18,4 +18,3 @@ export function Modal({ children, handleClose, isGradient}: ModalProps) {
         </div>
     )
 }
-//bg-custom-gradient-card

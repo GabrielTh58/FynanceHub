@@ -14,6 +14,7 @@ import { Transaction } from "@/types/transactionTypes";
 export default function Page() {
     const [user, setUser] = useState<string | null>(null);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+ 
 
     useEffect(() => {
         async function fetchUser() {
@@ -47,8 +48,11 @@ export default function Page() {
             </section>
 
             <section className="block">
-                <div className="grid grid-cols-5 grid-rows-5 gap-4 mb-6">
-                    <div className="col-span-3 row-span-5 h-full w-full flex flex-col bg-[url('/background.png')] bg-center bg-cover bg-no-repeat py-9 pl-7 rounded-2xl">
+                <div className="grid grid-cols-5 grid-rows-5 gap-4 mb-6 ">
+                    <div className="
+                        col-span-3 row-span-5 w-full flex flex-col                     
+                        bg-[url('/background.png')] bg-center bg-cover bg-no-repeat py-9 pl-7 rounded-2xl
+                    ">
                         <div className="col-span-2 flex flex-col flex-1">
                             <div className="flex flex-col items-start ">
                                 <p className="text-zinc-400 text-sm">Bem vindo de volta</p>
@@ -59,13 +63,16 @@ export default function Page() {
                             </div>
                         </div>
 
-                        <Link href="/transactions" className="w-1/5 flex justify-between items-center text-sm hover:text-blue-400">
+                        <Link href="/transactions" className="w-fit flex justify-between items-center gap-2 text-sm hover:text-blue-400">
                             Registrar Transação
                             <IconArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
 
-                    <div className="flex flex-col col-span-2 row-span-5 w-full bg-custom-gradient-card rounded-2xl p-5">
+                    <div className="
+                        flex flex-col col-span-2 row-span-5 w-full
+                        bg-custom-gradient-card rounded-2xl p-5
+                    ">                      
                         <h2 className="text-xl font-bold mb-5">Transações Recentes</h2>
 
                         <div className="w-full h-[1px] bg-zinc-800 mb-4"></div>

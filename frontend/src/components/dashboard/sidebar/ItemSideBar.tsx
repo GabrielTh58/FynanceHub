@@ -27,7 +27,7 @@ export function ItemSidebar({ title, url, icon, logout }: ItemSidebarProps) {
         <Link
           onClick={handleClick}
           href={url}
-          className={`w-full flex items-center gap-2 text-sm rounded-2xl px-4 py-3 transition hover:bg-tertiary
+          className={` flex items-center gap-2 text-sm rounded-2xl px-4 py-3 transition 
             ${isActive ? "bg-tertiary" : ""}
         `}>
           <div className={`p-1 rounded-lg ${isActive ? "bg-blue-600" : "bg-tertiary"}`}>

@@ -10,7 +10,7 @@ interface LogoProps {
 export function Logo({ width, height, className, textSize }: LogoProps) {
     return (
         <div className={`flex items-center justify-center gap-1 
-            ${className ? className : ''}    
+            ${className ? className : ''}              
         `}>
             
             <Image src={logo} alt="logo" width={width} height={height}/>

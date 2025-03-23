@@ -22,24 +22,25 @@ export function AnalyticsCards({ title, icon }: AnalyticsCardsProps) {
                             ml-2 text-sm
                             ${title === "Entrada"
                                 ? "text-green-600" : title === "Saída"
-                                ? "text-red-600" : positive
-                                ? "text-green-600" : "text-red-600"
+                                    ? "text-red-600" : positive
+                                        ? "text-green-600" : "text-red-600"
                             }
                         `}>
                             <span className="text-xs tracking-wide">
                                 {title === "Entrada"
                                     ? summary.percentageIncome.toFixed() + "%" : title === "Saída"
-                                    ? summary.percentageExpense.toFixed() + "%" : + summary.percentageTotal.toFixed() + "%"
+                                        ? summary.percentageExpense.toFixed() + "%" : + summary.percentageTotal.toFixed() + "%"
                                 }
                             </span>
                         </span>
                     </p>
                 </div>
 
+
                 <div className="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-lg p-1">
                     {icon}
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
