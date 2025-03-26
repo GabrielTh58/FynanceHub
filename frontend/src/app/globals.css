@@ -38,6 +38,10 @@ input:-webkit-autofill {
   .sidebar-gradient{
     @apply bg-gradient-to-b from-slate-900 to-slate-950
   }
+
+  .shadow-sidebar {
+    @apply shadow-[10px_10px_36px_8px_#1A1F37];
+  }
 }
 
 @layer base {

@@ -2,20 +2,20 @@
 
 import { IconReport } from "@tabler/icons-react";
 import { Dispatch, SetStateAction, useEffect } from "react";
-import { Modal } from "./shared/Modal";
+import { Modal } from ".//Modal";
 
 interface ModalNotificationlProps {
-    setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+    handleModalClose: () => void
     hasNotifications: boolean
 }
 
-export function ModalNotification({ hasNotifications, setIsModalOpen }: ModalNotificationlProps) {
+export function ModalNotification({ hasNotifications, handleModalClose }: ModalNotificationlProps) {
 
     function handleDownloadReport() {
         try {
             localStorage.setItem("lastReportDate", new Date().toISOString());
             localStorage.removeItem("hasNewReport"); // Desativar notificação
-            setIsModalOpen(false);
+            handleModalClose();
 
             console.log("Relatório baixado com sucesso!");
         } catch (error) {
@@ -24,7 +24,7 @@ export function ModalNotification({ hasNotifications, setIsModalOpen }: ModalNot
     }
 
     return (
-        <Modal>
+        <Modal handleClose={() => handleModalClose()}>
             {hasNotifications ? (
                 <>
                     <div className="flex items-center gap-2 mb-4">
@@ -37,7 +37,7 @@ export function ModalNotification({ hasNotifications, setIsModalOpen }: ModalNot
                     </p>
                     <div className="flex justify-center gap-4 mt-6">
                         <button className="bg-tertiary rounded-lg px-4 py-2 hover:bg-opacity-50"
-                            onClick={() => setIsModalOpen(false)}>
+                            onClick={() => handleModalClose()}>
                             Cancelar
                         </button>
                         <button className="bg-primary text-white rounded-lg px-4 py-2 hover:bg-gradient-to-r from-blue-700 to-blue-900"
@@ -50,12 +50,12 @@ export function ModalNotification({ hasNotifications, setIsModalOpen }: ModalNot
                 <div className="flex flex-col items-center">
                     <div className="flex items-center gap-2 mb-4">
                         <IconReport className="text-primary" />
-                        <h2 className="text-lg font-bold "> Relatórios</h2>
+                        <h2 className="text-lg font-bold ">Relatórios</h2>
                     </div>
 
-                    <p className="text-base text-zinc-400 mb-6">Nenhuma nova notificação no momento.</p>
+                    <p className="text-center text-base text-zinc-400 mb-6">Nenhuma nova notificação no momento.</p>
                     <button className="bg-tertiary rounded-lg px-4 py-2 hover:bg-opacity-50"
-                        onClick={() => setIsModalOpen(false)}>
+                        onClick={() => handleModalClose()}>
                         Voltar
                     </button>
                 </div>

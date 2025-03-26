@@ -1,8 +1,8 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { createTransaction } from "@/services/transactionService";
-import { useTransaction } from "./useTransaction";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { useForm } from "react-hook-form"
+import { createTransaction } from "@/services/transactionService"
+import { useTransaction } from "./useTransaction"
 
 
 const modalFormSchema = z.object({
@@ -13,13 +13,12 @@ const modalFormSchema = z.object({
         'SALES', 'REFUND', 'INVESTMENT', 'SUPPLIERS', 'OPERATING_COSTS',
         'SALARIES', 'MARKETING', 'TAXES', 'EQUIPMENT', 'TRANSPORT', 'OTHER'
     ]),
-});
+})
 
 type TModalForm = z.infer<typeof modalFormSchema>
 
-export function useModalTransactionForm(setIsModalOpen: () => void) {
+export function useModalTransactionForm(handleModalClose: () => void) {
     const { transactions, setTransactions } = useTransaction()
-    console.log(transactions);
     
     const { register, handleSubmit, formState: { errors } } = useForm<TModalForm>({
         resolver: zodResolver(modalFormSchema)
@@ -32,22 +31,18 @@ export function useModalTransactionForm(setIsModalOpen: () => void) {
                 data.amount,
                 data.type,
                 data.category,                
-            );
+            )
 
             if (transactionCreated) {
                 setTransactions([...(transactions ?? []), transactionCreated])
-                setIsModalOpen();
+                handleModalClose()
             }
         } catch (e) {
-            console.error(e);
-            alert("Erro ao criar transação");
+            console.error(e)
+            alert("Erro ao criar transação")
         }
     }
 
-    function handleClose() {
-        setIsModalOpen()      
-    }
-
-    return { register, handleSubmit, errors, handleCreateTransaction, handleClose };
+    return { register, handleSubmit, errors, handleCreateTransaction }
 
 }

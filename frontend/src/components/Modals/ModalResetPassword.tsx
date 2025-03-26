@@ -1,22 +1,22 @@
 import { IconEye, IconMail, IconX } from "@tabler/icons-react";
-import { InputFields } from "./auth_forms/InputFields";
-import { Modal } from "./shared/Modal";
 import { useResetPassword } from "@/hooks/useResetPassword";
-import { ButtonForm } from "./shared/ButtonForm";
+import { InputFields } from "../forms/InputFields";
+import { ButtonForm } from "../buttons/ButtonForm";
+import { Modal } from "./Modal";
 interface ModalFormProps {
-    setIsModalChangePasswordOpen: any
+    handleModalClose: () => void
 }
 
-export function ModalResetPassword({ setIsModalChangePasswordOpen }: ModalFormProps) {
+export function ModalResetPassword({ handleModalClose }: ModalFormProps) {
     const { register, handleSubmit, errors, onSubmit } = useResetPassword()
 
     return (
-        <Modal isGradient>
+        <Modal isGradient handleClose={handleModalClose}>
             <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between w-full">
                     <h3 className="w-full text-2xl text-center font-bold">Alterar Senha</h3>
                     <button
-                        onClick={() => setIsModalChangePasswordOpen(false)}
+                        onClick={() => handleModalClose()}
                         className="rounded-full p-[1px] cursor-pointer hover:bg-red-600"
                     >
                         <IconX />

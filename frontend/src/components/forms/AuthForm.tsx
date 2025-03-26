@@ -3,7 +3,7 @@
 import { IconEye, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
 import { InputFields } from "./InputFields";
-import { ButtonForm } from "../Buttons/ButtonForm";
+import { ButtonForm } from "../buttons/ButtonForm";
 import { useAuthForm } from "@/hooks/useAuthForm";
 
 type tTypeForm = "login" | "register";

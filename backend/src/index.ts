@@ -20,7 +20,7 @@ app.use("/", authRoutes);
 app.use("/users", userRoutes);
 app.use("/transactions", transactionRoutes);
 
-const PORT = 5000;
+const PORT = 5000
 app.listen(PORT, ()=>{
-    console.log(`Server running on port ${PORT}`); // revisar
+    console.log(`Server running on port ${PORT}`); 
 })
