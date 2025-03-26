@@ -1,34 +1,35 @@
-import { useModalTransactionForm } from "@/hooks/useModalTransactionForm";
-import { InputFields } from "../forms/InputFields";
-import { ButtonForm } from "../Buttons/ButtonForm";
-import { IconX } from "@tabler/icons-react";
-import { useState } from "react";
-import { TransactionCategory } from "@/utils/transactionsUtils";
-import { Modal } from "./Modal";
+import { useModalTransactionForm } from "@/hooks/useModalTransactionForm"
+import { InputFields } from "../forms/InputFields"
+import { ButtonForm } from "../buttons/ButtonForm"
+import { IconX } from "@tabler/icons-react"
+import { useState } from "react"
+import { TransactionCategory } from "@/utils/transactionsUtils"
+import { Modal } from "./Modal"
 
 interface ModalFormProps {
-    setIsModalOpen: () => void;
+    handleModalClose: () => void
 }
-export function ModalTransactionForm({ setIsModalOpen }: ModalFormProps) {
-    const { register, handleSubmit, errors, handleCreateTransaction, handleClose } = useModalTransactionForm(setIsModalOpen);
-    const [type, setType] = useState("INCOME");
-    const [category, setCategory] = useState("");
+export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
+    const { register, handleSubmit, errors, handleCreateTransaction } = useModalTransactionForm(handleModalClose)
 
-    const incomeCategories = ["SALES", "REFUND", "INVESTMENT"];
-    const expenseCategories = ["SUPPLIERS", "OPERATING_COSTS", "SALARIES", "MARKETING", "TAXES", "EQUIPMENT", "TRANSPORT", "OTHER"];
+    const [type, setType] = useState("INCOME")
+    const [category, setCategory] = useState("")
 
-    const categories = type === "INCOME" ? incomeCategories : expenseCategories;
+    const incomeCategories = ["SALES", "REFUND", "INVESTMENT"]
+    const expenseCategories = ["SUPPLIERS", "OPERATING_COSTS", "SALARIES", "MARKETING", "TAXES", "EQUIPMENT", "TRANSPORT", "OTHER"]
+
+    const categories = type === "INCOME" ? incomeCategories : expenseCategories
 
     return (
-        <Modal handleClose={handleClose} isGradient>
+        <Modal handleClose={handleModalClose} isGradient>
             <div
-                onClick={handleClose}
+                onClick={handleModalClose}
                 className="flex flex-col items-center justify-center"
             >
                 <div className="flex justify-between items-center w-full">
-                    <h3 className="w-full text-2xl text-center font-bold">Criar Transação</h3>
+                    <h3 className="w-full text-xl text-center font-bold sm:text-2xl">Criar Transação</h3>
                     <button
-                        onClick={() => setIsModalOpen()}
+                        onClick={() => handleModalClose()}
                         className="rounded-full p-[1px] cursor-pointer hover:bg-red-600"
                     >
                         <IconX />
@@ -36,7 +37,7 @@ export function ModalTransactionForm({ setIsModalOpen }: ModalFormProps) {
                 </div>
 
                 <form onSubmit={handleSubmit(handleCreateTransaction)}
-                    className="w-full flex flex-col gap-6 text-base text-white mt-10 mb-6 
+                    className="w-full flex flex-col gap-6 text-base text-white mt-10 mb-3 
             ">
                     <div className="flex flex-col">
                         <InputFields
@@ -101,5 +102,5 @@ export function ModalTransactionForm({ setIsModalOpen }: ModalFormProps) {
                 </form>
             </div>
         </Modal>
-    );
+    )
 }
