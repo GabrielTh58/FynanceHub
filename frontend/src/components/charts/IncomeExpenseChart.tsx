@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -33,7 +32,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function IncomeExpenseChart() {
-  const { incomeChartData } = useIncomeExpenseChartData();
+  const { chartData } = useIncomeExpenseChartData()
 
   return (
     <Card>
@@ -44,7 +43,7 @@ export function IncomeExpenseChart() {
       <CardContent  className="h-80">
         <ChartContainer config={chartConfig}  className="h-80 w-full py-4">
           <AreaChart
-            data={[...incomeChartData].reverse()}
+            data={[...chartData].reverse()}
             margin={{
               left: 12,
               right: 12,

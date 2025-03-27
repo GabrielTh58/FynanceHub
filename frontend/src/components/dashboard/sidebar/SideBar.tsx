@@ -6,15 +6,13 @@ import { logout } from "@/services/authService"
 import { useRouter } from "next/navigation"
 import { ItemSidebar } from "./ItemSideBar"
 import { MenuContext } from "@/context/MenuContext"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 export function SideBar() {
-    const [isModalConfirmationOpen, setIsModalConfirmationOpen] = useState(false);
-
     const router = useRouter()
+
     const { isMenuOpen } = useContext(MenuContext)
 
-    const handleModalConfirmationClose = () => setIsModalConfirmationOpen(false)
     async function handleLogout() {
         try {
             logout();
@@ -27,7 +25,7 @@ export function SideBar() {
     const SideBarItem = [
         { title: 'Dashboard', url: '/', icon: <IconHome /> },
         { title: 'Transações', url: '/transactions', icon: <IconTransfer /> },
-        { title: 'Configurações', url: '/configuracoes', icon: <IconSettings /> },
+        { title: 'Configurações', url: '/settings', icon: <IconSettings /> },
         { title: 'Sair', url: '/login', icon: <IconLogout />, logout: handleLogout },
     ]
 

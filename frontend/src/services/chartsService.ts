@@ -46,6 +46,8 @@ export async function getIncomeExpenseData(): Promise<TIncomeChartData[]> {
   return chartDataArray;
 }
 
+
+
 export async function getExpenseByCategoryData(): Promise<TCategoryExpenseChartData[]> {
   const transactions = await listAllTransactions();
 
@@ -78,3 +80,45 @@ export async function getExpenseByCategoryData(): Promise<TCategoryExpenseChartD
   console.log(chartDataArray);
   return chartDataArray;
 }
+
+
+// export async function getIncomeExpenseData(): Promise<TIncomeChartData[]> {
+//   const transactions = await listAllTransactions();
+//   if (!transactions?.length) {
+//     throw new Error("Nenhum dado encontrado");
+//   }
+
+//   const sixtyDaysAgo = new Date();
+//   sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+
+//   const filteredTransactions = transactions.filter((transaction: Transaction) => {
+//     const transactionDate = new Date(transaction.createdAt);
+//     return transactionDate >= sixtyDaysAgo;
+//   });
+
+//   const chartDataObj = filteredTransactions.reduce((acc: Record<string, TIncomeChartData>, { createdAt, amount, type }: TransactionChartData) => {
+//     // Agrupar por dia (YYYY-MM-DD)
+//     const dateKey = new Date(createdAt).toISOString().slice(0, 10);
+
+//     if (!acc[dateKey]) {
+//       acc[dateKey] = { date: dateKey, income: 0, expense: 0 };
+//     }
+
+//     if (type === "INCOME") {
+//       acc[dateKey].income += amount;
+//     } else if (type === "EXPENSE") {
+//       acc[dateKey].expense += amount;
+//     }
+
+//     return acc;
+//   }, {} as Record<string, TIncomeChartData>);
+
+//   // Ordenação por data crescente (corrigida)
+//   const sortedChartData = Object.values(chartDataObj).sort(
+//     (a:any, b:any) => new Date(a.date).getTime() - new Date(b.date).getTime()
+//   ) as TIncomeChartData[]
+
+//   console.log(sortedChartData);
+  
+//   return sortedChartData
+// }

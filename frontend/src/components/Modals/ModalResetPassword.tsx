@@ -1,14 +1,21 @@
-import { IconEye, IconMail, IconX } from "@tabler/icons-react";
+import { IconEye, IconEyeOff, IconMail, IconX } from "@tabler/icons-react";
 import { useResetPassword } from "@/hooks/useResetPassword";
 import { InputFields } from "../forms/InputFields";
 import { ButtonForm } from "../buttons/ButtonForm";
 import { Modal } from "./Modal";
+import { useState } from "react";
 interface ModalFormProps {
     handleModalClose: () => void
 }
 
 export function ModalResetPassword({ handleModalClose }: ModalFormProps) {
+    const [isCurrentPasswordVisible, setIsCurrentPasswordVisible] = useState(false)
+    const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false)   
+
     const { register, handleSubmit, errors, onSubmit } = useResetPassword()
+
+    const handleCurrentPasswordVisible = () => setIsCurrentPasswordVisible(!isCurrentPasswordVisible)
+    const handleNewPasswordVisible = () => setIsNewPasswordVisible(!isNewPasswordVisible)
 
     return (
         <Modal isGradient handleClose={handleModalClose}>
@@ -38,14 +45,16 @@ export function ModalResetPassword({ handleModalClose }: ModalFormProps) {
                         />
                         {errors.email && <span className="text-sm text-red-500">{String(errors.email.message)}</span>}
                     </div>
-                    
+
                     <div>
                         <InputFields
                             label="Senha Atual"
                             name="currentPassword"
                             type="password"
-                            icon={<IconEye stroke={1} />}
+                            typeVisible={isCurrentPasswordVisible ? "text" : "password"}
+                            icon={isCurrentPasswordVisible ? <IconEye stroke={1} /> : <IconEyeOff stroke={1} />}
                             register={register("currentPassword")}
+                            iconAction={handleCurrentPasswordVisible}
                         />
                         {errors.currentPassword && <span className="text-sm text-red-500">{String(errors.currentPassword.message)}</span>}
                     </div>
@@ -55,8 +64,10 @@ export function ModalResetPassword({ handleModalClose }: ModalFormProps) {
                             label="Nova Senha"
                             name="newPassword"
                             type="password"
-                            icon={<IconEye />}
+                            typeVisible={isNewPasswordVisible ? "text" : "password"}
+                            icon={isNewPasswordVisible ? <IconEye stroke={1} /> : <IconEyeOff stroke={1} />}
                             register={register("newPassword")}
+                            iconAction={handleNewPasswordVisible}
                         />
                         {errors.newPassword && <span className="text-sm text-red-500">{String(errors.newPassword.message)}</span>}
                     </div>

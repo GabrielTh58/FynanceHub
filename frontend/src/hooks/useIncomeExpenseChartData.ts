@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import { TIncomeChartData } from "@/types/chartTypes";
 
 export function useIncomeExpenseChartData() {
-    const [incomeChartData, setincomeChartData] = useState<TIncomeChartData[]>([]);
+    const [chartData, setChartData] = useState<TIncomeChartData[]>([]);
 
     useEffect(() => {
         async function fetchChartData() {
             try {
                 const data = await getIncomeExpenseData();
                 if (!data) return
-                setincomeChartData(data);
+                console.log("Dados recebidos para o gráfico:", data);
+                setChartData(data);
             } catch (e: any) {
                 console.error(e)
             }
@@ -19,5 +20,5 @@ export function useIncomeExpenseChartData() {
         fetchChartData();
     }, [])
 
-    return { incomeChartData }
+    return { chartData }
 }

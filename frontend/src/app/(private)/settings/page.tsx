@@ -58,8 +58,8 @@ export default function Page() {
         <div className="flex flex-col items-center">
             <div className="sm:w-full">
                 <nav className="flex items-center gap-14 text-lg mb-14">
-                    <SettingsNavLink href="/configuracoes">Conta</SettingsNavLink>
-                    <SettingsNavLink href="/configuracoes/aparencia">Aparência</SettingsNavLink>
+                    <SettingsNavLink href="/settings">Conta</SettingsNavLink>
+                    <SettingsNavLink href="/settings/appearance">Aparência</SettingsNavLink>
                 </nav>
             </div>
 
