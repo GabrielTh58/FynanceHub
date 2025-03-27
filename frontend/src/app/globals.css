@@ -42,6 +42,14 @@ input:-webkit-autofill {
   .shadow-sidebar {
     @apply shadow-[10px_10px_36px_8px_#1A1F37];
   }
+
+  .btn-gradient-primary{
+    @apply bg-gradient-to-r from-[#121241] to-[#2E2EA7] 
+  }
+
+  .btn-gradient-auth{
+    @apply bg-gradient-to-r from-blue-700 to-blue-900
+  }
 }
 
 @layer base {

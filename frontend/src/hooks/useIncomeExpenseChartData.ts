@@ -2,7 +2,7 @@ import { getIncomeExpenseData } from "@/services/chartsService";
 import { useEffect, useState } from "react";
 import { TIncomeChartData } from "@/types/chartTypes";
 
-export function useIncomeData() {
+export function useIncomeExpenseChartData() {
     const [incomeChartData, setincomeChartData] = useState<TIncomeChartData[]>([]);
 
     useEffect(() => {

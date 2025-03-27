@@ -1,34 +1,40 @@
 "use client"
 
-import { ActionButton } from "@/components/buttons/AddTransactionButton"
+import { ActionButton } from "@/components/buttons/ActionButton"
 import { IconAdjustmentsHorizontal, IconPlus, IconX } from "@tabler/icons-react"
-import { FilterButton } from "@/components/buttons/FilterButton"
 import { useState } from "react"
 import { ModalTransactionForm } from "@/components/Modals/ModalTransactionForm"
 import { Transaction } from "@/types/transactionTypes"
 import { useTransaction } from "@/hooks/useTransaction"
 import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils"
 import { deleteTransaction } from "@/services/transactionService"
+import { ModalFilter } from "@/components/Modals/ModalFilter"
 
 export default function Page() {
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isModalTransactionOpen, setisModalTransactionOpen] = useState(false)
+    const [isModalFilterOpen, setisModalFilterOpen] = useState(false)
+    const [filterType, setFilterType] = useState<"INCOME" | "EXPENSE" | "ALL">("ALL")
+
     const { transactions } = useTransaction()
 
+    const handleFilter = (type: "INCOME" | "EXPENSE" | "ALL") => {
+        setFilterType(type)
+    } 
 
-    const handleOpenModal = () => setIsModalOpen(true);
-    const handleModalClose = () => setIsModalOpen(false);
+    const handleModalFilterOpen = () => setisModalFilterOpen(true)
+    const handleModalFilterClose = () => setisModalFilterOpen(false)
     const handleDeleteTransaction = async (id: number) => {
-        const response = await deleteTransaction(id)
-        console.log(response);
+        await deleteTransaction(id)
     }
 
+    const filteredTransactions = transactions?.filter(transaction => {
+        if (filterType === "ALL") return true
+        return transaction.type === filterType
+    })
 
     return (
-        <section className="
-            flex flex-col items-center 
-            bg-gradient-to-br from-[#060B26] to-[rgba(0,0,0,0)] shadow-lg rounded-lg p-5
-        ">
-            <div className={`${isModalOpen ? "blur-sm opacity-50" : ""}`}>
+        <section className="flex flex-col items-center bg-gradient-to-br from-[#060B26] to-[rgba(0,0,0,0)] shadow-lg rounded-lg p-5">
+            <div className={`${isModalTransactionOpen ? "blur-sm opacity-50" : ""}`}>
                 <div className="w-full mb-8">
                     <div className="md:flex md:items-center md:gap-6 md:justify-between">
                         <h2 className="text-center text-xl font-bold mb-7 md:mb-0 md:flex md:items-center md:justify-between md:text-start lg:text-2xl">
@@ -38,14 +44,17 @@ export default function Page() {
                         <div className="flex items-center justify-between gap-5">
                             <ActionButton
                                 icon={<IconPlus width={16} height={16} />}
-                                onClick={handleOpenModal}
+                                onClick={() => setisModalTransactionOpen(true)}
                             >
                                 Nova Transação
                             </ActionButton>
-
-                            <FilterButton icon={<IconAdjustmentsHorizontal width={16} height={16} />}>
+                            <button 
+                                onClick={handleModalFilterOpen}
+                                className="flex gap-2 items-center text-sm text-zinc-300 rounded-lg py-1.5 px-4 bg-[#1a1f37] hover:bg-opacity-50"
+                            >
+                                <IconAdjustmentsHorizontal width={16} height={16} />
                                 Filtrar
-                            </FilterButton>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -63,7 +72,7 @@ export default function Page() {
                     </thead>
 
                     <tbody className="text-sm text-zinc-300 font-semibold">
-                        {transactions && transactions.map((transaction: Transaction, index: number) => (
+                        {filteredTransactions?.map((transaction: Transaction, index: number) => (
                             <tr key={index} className="border-b border-zinc-700 text-xs md:text-sm">
                                 <td className="w-1/5 py-5 pl-1 pr-4 md:px-4">{transaction.description}</td>
                                 <td className="hidden md:block w-1/5 py-5 pl-1 pr-4 md:px-4">
@@ -81,8 +90,8 @@ export default function Page() {
                                     <span className={`px-3 py-2 rounded-2xl
                                         ${transaction.type === "INCOME"
                                             ? "text-green-600 bg-green-700 bg-opacity-20"
-                                            : "text-red-600 bg-red-700 bg-opacity-20"}`
-                                    }>
+                                            : "text-red-600 bg-red-700 bg-opacity-20"}`}
+                                    >
                                         {translateTransactionType(transaction.type)}
                                     </span>
                                 </td>
@@ -100,7 +109,14 @@ export default function Page() {
                 </table>
             </div>
 
-            {isModalOpen && <ModalTransactionForm handleModalClose={handleModalClose} />}
+            {isModalTransactionOpen && <ModalTransactionForm handleModalTransactionClose={() => setisModalTransactionOpen(false)} />}
+
+            {isModalFilterOpen && (
+                <ModalFilter
+                    handleModalFilterClose={handleModalFilterClose}
+                    handleFilterTransaction={handleFilter}
+                />
+            )}
         </section>
-    );
+    )
 }

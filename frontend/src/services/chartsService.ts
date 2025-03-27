@@ -21,7 +21,7 @@ export async function getIncomeExpenseData(): Promise<TIncomeChartData[]> {
   const filteredTransactions = transactions.filter((transaction: Transaction) => {
     const transactionDate = new Date(transaction.createdAt);
     return transactionDate >= oneMonthAgo;
-  });
+  })
 
   const chartDataObj = filteredTransactions.reduce((acc: Record<string, TIncomeChartData>, { createdAt, amount, type }: TransactionChartData) => {
     //  ISO slice para gerar algo como "2025-02"

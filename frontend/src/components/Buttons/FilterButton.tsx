@@ -1,20 +1,15 @@
-interface TransactionButtonProps {
-    children: React.ReactNode;
-    icon?: React.ReactNode;
-  }
-  
-  export function FilterButton({ children, icon, }: TransactionButtonProps) {
-    
+interface FilterButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  children: React.ReactNode
+  className?: string
+}
 
-    return (
-      <button 
-
-        className="flex gap-2 items-center text-sm text-zinc-300 rounded-lg py-1.5 px-4 
-        bg-[#1a1f37] hover:bg-opacity-50
-      ">
-          {children}
-          {icon && icon}
-      </button>
-    );
-  }
-  
+export function FilterButton({ children, className, ...props }: FilterButtonProps) {
+  return (
+    <button
+      {...props}
+      className={`w-48 h-12 rounded-xl font-semibold text-sm border ${className || ""}`}
+    >
+      {children}
+    </button>
+  )
+}

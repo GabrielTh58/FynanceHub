@@ -3,17 +3,17 @@ import { Transaction as TransactionType } from "@/types/transactionTypes";
 import { useEffect, useState } from "react";
 
 export function useTransaction() {
-    const [transactions, setTransactions] = useState<TransactionType[]>();
+    const [transactions, setTransactions] = useState<TransactionType[]>()
 
     useEffect(() => {
         async function fetchTransactions() {
-            const data = await listAllTransactions();
+            const data = await listAllTransactions()
             if (data) {
-                setTransactions(data);
+                setTransactions(data)
             }
         }
-        fetchTransactions();
-    }, [transactions]);
+        fetchTransactions()
+    }, [transactions])
 
     return { transactions, setTransactions };
 }

@@ -6,12 +6,15 @@ import { logout } from "@/services/authService"
 import { useRouter } from "next/navigation"
 import { ItemSidebar } from "./ItemSideBar"
 import { MenuContext } from "@/context/MenuContext"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 export function SideBar() {
+    const [isModalConfirmationOpen, setIsModalConfirmationOpen] = useState(false);
+
     const router = useRouter()
     const { isMenuOpen } = useContext(MenuContext)
 
+    const handleModalConfirmationClose = () => setIsModalConfirmationOpen(false)
     async function handleLogout() {
         try {
             logout();

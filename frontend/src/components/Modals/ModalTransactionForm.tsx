@@ -7,10 +7,10 @@ import { TransactionCategory } from "@/utils/transactionsUtils"
 import { Modal } from "./Modal"
 
 interface ModalFormProps {
-    handleModalClose: () => void
+    handleModalTransactionClose: () => void
 }
-export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
-    const { register, handleSubmit, errors, handleCreateTransaction } = useModalTransactionForm(handleModalClose)
+export function ModalTransactionForm({ handleModalTransactionClose }: ModalFormProps) {
+    const { register, handleSubmit, errors, handleCreateTransaction } = useModalTransactionForm(handleModalTransactionClose)
 
     const [type, setType] = useState("INCOME")
     const [category, setCategory] = useState("")
@@ -21,7 +21,7 @@ export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
     const categories = type === "INCOME" ? incomeCategories : expenseCategories
 
     return (
-        <Modal handleClose={handleModalClose} isGradient>
+        <Modal handleClose={handleModalTransactionClose} isGradient>
             <div
                 onClick={(e) => e.stopPropagation()}
                 className="flex flex-col items-center justify-center"
@@ -29,7 +29,7 @@ export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
                 <div className="flex justify-between items-center w-full">
                     <h3 className="w-full text-xl text-center font-bold sm:text-2xl">Criar Transação</h3>
                     <button
-                        onClick={handleModalClose}
+                        onClick={handleModalTransactionClose}
                         className="rounded-full p-[1px] cursor-pointer hover:bg-red-600"
                     >
                         <IconX />

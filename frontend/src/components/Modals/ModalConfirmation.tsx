@@ -8,9 +8,9 @@ interface ModalConfirmationProps {
     onConfirm: () => void;
     title: string;
     description?: string;
-    confirmText?: string;
-    cancelText?: string;
-    icon: boolean
+    confirmText: string;
+    cancelText: string;
+    icon?: boolean
 }
 
 export function ModalConfirmation({

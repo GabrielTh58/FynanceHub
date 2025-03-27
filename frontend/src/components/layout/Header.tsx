@@ -12,7 +12,7 @@ export function Header() {
     const [hasNotifications, setHasNotifications] = useState(false)
     const [isNotificationsModalOpen, setIsNotificationsModalOpen] = useState(false)
 
-    const { isMenuOpen, toggleMenu } = useContext(MenuContext)
+    const { isMenuOpen ,toggleMenu } = useContext(MenuContext)
 
     function handleModalClose () { 
         setIsNotificationsModalOpen(false)
@@ -50,8 +50,6 @@ export function Header() {
         }
     }, [pathname])
 
-    console.log(isMenuOpen);
-    
     return (
         <header className="flex item-center justify-between w-full h-14 mb-5 ">
             <div className="hidden lg:flex lg:items-center">
@@ -61,13 +59,17 @@ export function Header() {
                 </p>
             </div>
 
-            <div className="flex items-center text-zinc-400 p-1 z-10 lg:hidden">
+            <div className="flex items-center text-zinc-400 p-1 z-30 lg:hidden">
                 <button
                     onClick={toggleMenu}
                     className="flex items-center text-zinc-400 p-1 lg:hidden focus:outline-none z-30"
                     aria-label="Abrir menu de navegação"
                 >
-                    <IconMenu2 />
+                    {!isMenuOpen ? (
+                        <IconMenu2 />
+                    ): (
+                        <IconX />  
+                    )}
                 </button>
             </div>
 

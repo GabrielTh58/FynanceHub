@@ -12,7 +12,7 @@ import {
   ChartContainer,
   ChartTooltip,
 } from "@/components/ui/chart"
-import { useCategoryExpense } from "@/hooks/useCategoryExpense"
+import { useCategoryExpenseChartData } from "@/hooks/useCategoryExpenseChartData"
 import { TransactionCategory, translateCategory } from "@/utils/transactionsUtils"
 
 // Configuração do gráfico
@@ -24,7 +24,7 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function ExpenseByCategory() {
-  const { categoryExpense } = useCategoryExpense()
+  const { categoryExpense } = useCategoryExpenseChartData()
 
   return (
     <Card>

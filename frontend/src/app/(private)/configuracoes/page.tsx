@@ -8,7 +8,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ModalResetPassword } from "@/components/Modals/ModalResetPassword"
 import { ModalConfirmation } from "@/components/Modals/ModalConfirmation"
-import { ActionButton } from "@/components/buttons/AddTransactionButton"
+import { ActionButton } from "@/components/buttons/ActionButton"
 
 interface User {
     id: number
