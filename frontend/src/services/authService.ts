@@ -57,6 +57,7 @@ export function logout() {
     try{
         Cookies.remove("token")
         Cookies.remove("userId")
+        
     } catch (error) {
         console.error("Erro ao fazer logout:", error)
     }

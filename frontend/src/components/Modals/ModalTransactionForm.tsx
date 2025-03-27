@@ -7,10 +7,17 @@ import { TransactionCategory } from "@/utils/transactionsUtils"
 import { Modal } from "./Modal"
 
 interface ModalFormProps {
+<<<<<<< HEAD
     handleModalClose: () => void
 }
 export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
     const { register, handleSubmit, errors, handleCreateTransaction } = useModalTransactionForm(handleModalClose)
+=======
+    handleModalTransactionClose: () => void
+}
+export function ModalTransactionForm({ handleModalTransactionClose }: ModalFormProps) {
+    const { register, handleSubmit, errors, handleCreateTransaction } = useModalTransactionForm(handleModalTransactionClose)
+>>>>>>> task/responsive
 
     const [type, setType] = useState("INCOME")
     const [category, setCategory] = useState("")
@@ -21,15 +28,25 @@ export function ModalTransactionForm({ handleModalClose }: ModalFormProps) {
     const categories = type === "INCOME" ? incomeCategories : expenseCategories
 
     return (
+<<<<<<< HEAD
         <Modal handleClose={handleModalClose} isGradient>
             <div
                 onClick={handleModalClose}
+=======
+        <Modal handleClose={handleModalTransactionClose} isGradient>
+            <div
+                onClick={(e) => e.stopPropagation()}
+>>>>>>> task/responsive
                 className="flex flex-col items-center justify-center"
             >
                 <div className="flex justify-between items-center w-full">
                     <h3 className="w-full text-xl text-center font-bold sm:text-2xl">Criar Transação</h3>
                     <button
+<<<<<<< HEAD
                         onClick={() => handleModalClose()}
+=======
+                        onClick={handleModalTransactionClose}
+>>>>>>> task/responsive
                         className="rounded-full p-[1px] cursor-pointer hover:bg-red-600"
                     >
                         <IconX />

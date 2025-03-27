@@ -1,6 +1,6 @@
 import { IconExclamationCircle, IconX } from "@tabler/icons-react";
 import React from "react";
-import { Modal } from "./shared/Modal";
+import { Modal } from "./Modal";
 
 interface ModalConfirmationProps {
     isOpen: boolean;
@@ -8,9 +8,9 @@ interface ModalConfirmationProps {
     onConfirm: () => void;
     title: string;
     description?: string;
-    confirmText?: string;
-    cancelText?: string;
-    icon: boolean
+    confirmText: string;
+    cancelText: string;
+    icon?: boolean
 }
 
 export function ModalConfirmation({
@@ -45,7 +45,7 @@ export function ModalConfirmation({
             </div>
             <div className="text-center">
                 <h2 className="text-xl font-semibold">{title}</h2>
-                {description && <p className="text-gray-600 mt-3">{description}</p>}
+                {description && <p className="text-gray-400 mt-3">{description}</p>}
             </div>
 
             

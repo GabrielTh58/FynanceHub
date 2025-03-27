@@ -41,17 +41,22 @@ export default function Page() {
 
     return (
         <>
-            <section className="flex items-center gap-4 mb-5">
+            <section className="flex flex-col items-center gap-4 mb-5 sm:flex-row">
                 <AnalyticsCards title="Saldo" icon={<IconWallet />} />
                 <AnalyticsCards title="Entrada" icon={<IconCreditCardRefund />} />
                 <AnalyticsCards title="Saída" icon={<IconCreditCardPay />} />
             </section>
 
             <section className="block">
-                <div className="grid grid-cols-5 grid-rows-5 gap-4 mb-6 ">
+                <div className="grid grid-cols-1 gap-4 mb-6 
+                    md:grid-cols-2
+                    lg:grid-cols-5
+                ">
                     <div className="
-                        col-span-3 row-span-5 w-full flex flex-col                     
-                        bg-[url('/background.png')] bg-center bg-cover bg-no-repeat py-9 pl-7 rounded-2xl
+                        col-span-2 h-[350px] w-full flex flex-col                     
+                        bg-[url('/bg-dashboard.png')] bg-center bg-cover bg-no-repeat py-9 pl-5 rounded-2xl
+                        md:h-[460px] md:col-span-1 
+                        lg:col-span-3
                     ">
                         <div className="col-span-2 flex flex-col flex-1">
                             <div className="flex flex-col items-start ">
@@ -70,8 +75,10 @@ export default function Page() {
                     </div>
 
                     <div className="
-                        flex flex-col col-span-2 row-span-5 w-full
+                        flex flex-col col-span-2 w-full
                         bg-custom-gradient-card rounded-2xl p-5
+                        md:col-span-1
+                        lg:col-span-2
                     ">                      
                         <h2 className="text-xl font-bold mb-5">Transações Recentes</h2>
 
@@ -81,11 +88,11 @@ export default function Page() {
                     </div>
                 </div>
                 
-                <div className="grid grid-cols-5 gap-4">
-                    <div className="col-span-3 chart-gradient shadow-lg rounded-2xl">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
+                    <div className="col-span-3 chart-gradient shadow-lg rounded-2xl md:col-span-1 lg:col-span-3">
                         <IncomeExpenseChart />                     
                     </div>
-                    <div className="col-span-2 chart-gradient shadow-lg rounded-2xl">
+                    <div className="col-span-3 chart-gradient shadow-lg rounded-2xl md:col-span-1 lg:col-span-2">
                         <ExpenseByCategory />
                     </div>
                 </div>

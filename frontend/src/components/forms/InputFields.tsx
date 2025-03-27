@@ -7,10 +7,12 @@ interface InputFieldsProps {
     type: string
     icon?: React.ReactNode
     register: any
+    iconAction?: () => void
 }
 
-export function InputFields({ label, placeholder, name, type, icon, register }: InputFieldsProps) {
-
+export function InputFields({ label, placeholder, name, type, icon, register, iconAction }: InputFieldsProps) {
+  
+    
     return (
         <>
             <label htmlFor={name} className="text-base font-medium text-white">{label}</label>
@@ -22,7 +24,9 @@ export function InputFields({ label, placeholder, name, type, icon, register }: 
                     placeholder={placeholder}
                     className="w-full flex bg-transparent py-2 rounded-lg px-2 outline-none placeholder:text-sm placeholder:text-zinc-500" />
                     {icon && (
-                        icon                
+                        <button onClick={iconAction}>
+                            {icon}                
+                        </button>
                     )}
             </div>
         </>

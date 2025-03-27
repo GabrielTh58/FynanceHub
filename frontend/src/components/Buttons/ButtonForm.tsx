@@ -6,7 +6,7 @@ export function ButtonForm({ children }: ButtonFormProps) {
     return (
         <button
             type="submit"
-            className="w-full h-12 py-2 rounded-lg  mt-4 bg-gradient-to-r from-blue-700 to-blue-900">
+            className="w-full  py-2 rounded-lg text-base mt-4 btn-gradient-auth md:h-12 md:py-2 md:text-lg">
             {children}
         </button>
     )

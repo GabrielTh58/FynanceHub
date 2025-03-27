@@ -19,7 +19,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-import { useIncomeData } from "@/hooks/useIncomeData";
+import { useIncomeExpenseChartData } from "@/hooks/useIncomeExpenseChartData";
 
 const chartConfig = {
   expense: {
@@ -33,7 +33,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function IncomeExpenseChart() {
-  const { incomeChartData } = useIncomeData();
+  const { incomeChartData } = useIncomeExpenseChartData();
 
   return (
     <Card>

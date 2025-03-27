@@ -11,12 +11,12 @@ export function AnalyticsCards({ title, icon }: AnalyticsCardsProps) {
     const positive = summary.income > summary.expense
 
     return (
-        <div className="flex-1 p-5 bg-custom-gradient-card rounded-lg">
+        <div className="p-5 bg-custom-gradient-card rounded-lg w-full sm:w-1/3 ">
             <div className="flex items-center justify-between">
                 <div>
                     <h3 className="text-xs text-zinc-400 mb-2">{title}</h3>
 
-                    <p className="text-lg">
+                    <p className="text-base md:text-lg">
                         R$ {title === "Saldo" ? summary.total.toFixed(2) : title === "Entrada" ? summary.income.toFixed(2) : summary.expense.toFixed(2)}
                         <span className={`
                             ml-2 text-sm
@@ -37,7 +37,7 @@ export function AnalyticsCards({ title, icon }: AnalyticsCardsProps) {
                 </div>
 
 
-                <div className="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-lg p-1">
+                <div className="sm:hidden md:flex flex items-center justify-center w-10 h-10 bg-blue-600 rounded-lg p-1">
                     {icon}
                 </div>
             </div>

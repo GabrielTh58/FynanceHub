@@ -1,18 +1,23 @@
 'use client'
 
-import { IconEye, IconMail } from "@tabler/icons-react";
+import { IconEye, IconEyeCancel, IconEyeOff, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
 import { InputFields } from "./InputFields";
-import { ButtonForm } from "../Buttons/ButtonForm";
+import { ButtonForm } from "../buttons/ButtonForm";
 import { useAuthForm } from "@/hooks/useAuthForm";
+import { useState } from "react";
 
 type tTypeForm = "login" | "register";
 
 export function AuthForm({ type }: { type: tTypeForm }) {
-    const { register, handleSubmit, errors, onSubmit, isLogin } = useAuthForm({ type });
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+
+    const { register, handleSubmit, errors, onSubmit, isLogin } = useAuthForm({ type })
+
+    const handlePasswordVisible = () => setIsPasswordVisible(!isPasswordVisible)
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-5 text-xl mt-10 mb-6 shadow-xl">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-5 text-xl mb-6 shadow-xl mt-6 md:mt-10">
             {!isLogin && (
                 <div>
                     <InputFields
@@ -44,7 +49,8 @@ export function AuthForm({ type }: { type: tTypeForm }) {
                     placeholder="Pelo menos 6 caracteres"
                     name="password"
                     type="password"
-                    icon={<IconEye stroke={1} />}
+                    icon={isPasswordVisible ? <IconEye stroke={1} /> : <IconEyeOff stroke={1} />}
+                    iconAction={handlePasswordVisible}
                 />
                 {errors.password && <span className="text-sm text-red-500">{String(errors.password.message)}</span>}
 
