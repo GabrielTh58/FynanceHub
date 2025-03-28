@@ -1,5 +1,5 @@
 import backImage from "/public/bg-login.png";
-import { Logo } from "@/components/ui/Logo";
+import { Logo } from "@/components/layout/Logo";
 export default function Layout({ children }: any) {
     return (
         <section className="h-screen flex flex-col items-center justify-center bg-cover bg-center bg-no-repeat"

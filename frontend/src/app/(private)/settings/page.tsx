@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { deleteUser, getUser } from "@/services/userServices"
-import { SettingsNavLink } from "@/components/SettingNavLink"
-import { SettingsInfoText } from "@/components/SettingsInfoText"
+import { SettingsNavLink } from "@/components/layout/SettingNavLink"
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ModalResetPassword } from "@/components/Modals/ModalResetPassword"

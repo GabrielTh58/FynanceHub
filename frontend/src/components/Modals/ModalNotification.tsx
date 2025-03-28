@@ -1,7 +1,6 @@
 "use client";
 
 import { IconReport } from "@tabler/icons-react";
-import { Dispatch, SetStateAction, useEffect } from "react";
 import { Modal } from ".//Modal";
 
 interface ModalNotificationlProps {
@@ -24,7 +23,7 @@ export function ModalNotification({ hasNotifications, handleModalClose }: ModalN
     }
 
     return (
-        <Modal handleClose={() => handleModalClose()}>
+        <Modal handleClose={handleModalClose}>
             {hasNotifications ? (
                 <>
                     <div className="flex items-center gap-2 mb-4">

@@ -1,7 +1,7 @@
 "use client";
 
-import { SettingsNavLink } from "@/components/SettingNavLink";
-import { SettingsInfoText } from "@/components/SettingsInfoText";
+import { SettingsNavLink } from "@/components/layout/SettingNavLink";
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText";
 
 export default function Page() {
   return (
