@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { deleteUser, getUser } from "@/services/userServices"
-import { SettingsNavLink } from "@/components/SettingNavLink"
-import { SettingsInfoText } from "@/components/SettingsInfoText"
+import { SettingsNavLink } from "@/components/layout/SettingNavLink"
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { ModalResetPassword } from "@/components/Modals/ModalResetPassword"
@@ -58,8 +58,8 @@ export default function Page() {
         <div className="flex flex-col items-center">
             <div className="sm:w-full">
                 <nav className="flex items-center gap-14 text-lg mb-14">
-                    <SettingsNavLink href="/configuracoes">Conta</SettingsNavLink>
-                    <SettingsNavLink href="/configuracoes/aparencia">Aparência</SettingsNavLink>
+                    <SettingsNavLink href="/settings">Conta</SettingsNavLink>
+                    <SettingsNavLink href="/settings/appearance">Aparência</SettingsNavLink>
                 </nav>
             </div>
 

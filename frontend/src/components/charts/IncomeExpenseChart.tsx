@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -16,7 +15,6 @@ import {
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
-  ChartTooltipContent,
 } from "@/components/ui/chart";
 
 import { useIncomeExpenseChartData } from "@/hooks/useIncomeExpenseChartData";
@@ -33,7 +31,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function IncomeExpenseChart() {
-  const { incomeChartData } = useIncomeExpenseChartData();
+  const { chartData } = useIncomeExpenseChartData()
 
   return (
     <Card>
@@ -41,10 +39,10 @@ export function IncomeExpenseChart() {
         <CardTitle>Receitas X Despesas</CardTitle>
         <CardDescription>Desempenho financeiro dos últimos 30 dias</CardDescription>
       </CardHeader>
-      <CardContent  className="h-80">
-        <ChartContainer config={chartConfig}  className="h-80 w-full py-4">
+      <CardContent className="h-80">
+        <ChartContainer config={chartConfig} className="h-80 w-full py-4">
           <AreaChart
-            data={[...incomeChartData].reverse()}
+            data={chartData}
             margin={{
               left: 12,
               right: 12,
@@ -58,13 +56,8 @@ export function IncomeExpenseChart() {
               axisLine={false}
               tickMargin={8}
               tickFormatter={(value) => {
-                const months = [
-                  "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
-                  "Jul", "Ago", "Set", "Out", "Nov", "Dez"
-                ];
-
-                const monthIndex = parseInt(value.slice(5, 7), 10) - 1;
-                return months[monthIndex] || value;
+                const date = new Date(value);
+                return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}`;
               }}
             />
 
@@ -76,30 +69,45 @@ export function IncomeExpenseChart() {
             />
 
             <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent indicator="line" />}
+              cursor={{ strokeDasharray: "3 3" }}
+              content={({ payload }) => {
+                if (!payload || payload.length === 0) return null;
+                const data = payload[0].payload;
+                return (
+                  <div className="rounded bg-background p-2 text-sm shadow-sm border w-40">
+                    <div><strong>Data:</strong> {new Date(data.date).toLocaleDateString()}</div>
+                    <div><strong>Receita:</strong> R$ {data.income.toFixed(2)}</div>
+                    <div><strong>Despesa:</strong> R$ {data.expense.toFixed(2)}</div>
+                  </div>
+                );
+              }}
             />
 
+            {/* Despesa (base do gráfico) */}
             <Area
               dataKey="expense"
+              type="natural"
+              fill="var(--color-expense)"
+              fillOpacity={0.3}
+              stroke="var(--color-expense)"
+              stackId="a"
+            />
+
+            {/* Receita (topo do gráfico) */}
+            <Area
+              dataKey="income"
               type="natural"
               fill="var(--color-income)"
               fillOpacity={0.4}
               stroke="var(--color-income)"
               stackId="a"
             />
-            <Area
-              dataKey="income"
-              type="natural"
-              fill="var(--color-expense)"
-              fillOpacity={0.4}
-              stroke="var(--color-expense)"
-              stackId="a"
-            />
 
             <ChartLegend
               content={<ChartLegendContent />}
-              formatter={(value) => value === "expense" ? "Despesa" : value === "income" ? "Receita" : ""}
+              formatter={(value) =>
+                value === "expense" ? "Despesa" : value === "income" ? "Receita" : ""
+              }
             />
           </AreaChart>
         </ChartContainer>

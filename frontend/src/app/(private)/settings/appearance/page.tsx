@@ -1,14 +1,14 @@
 "use client";
 
-import { SettingsNavLink } from "@/components/SettingNavLink";
-import { SettingsInfoText } from "@/components/SettingsInfoText";
+import { SettingsNavLink } from "@/components/layout/SettingNavLink";
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText";
 
 export default function Page() {
   return (
     <div>
       <nav className="flex items-center gap-14 text-lg mb-14">
-        <SettingsNavLink href="/configuracoes">Conta</SettingsNavLink>
-        <SettingsNavLink href="/configuracoes/aparencia">Aparência</SettingsNavLink>
+        <SettingsNavLink href="/settings">Conta</SettingsNavLink>
+        <SettingsNavLink href="/settings/appearance">Aparência</SettingsNavLink>
       </nav>
 
       <SettingsInfoText title="Tema" />

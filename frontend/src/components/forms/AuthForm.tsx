@@ -49,6 +49,7 @@ export function AuthForm({ type }: { type: tTypeForm }) {
                     placeholder="Pelo menos 6 caracteres"
                     name="password"
                     type="password"
+                    typeVisible={isPasswordVisible ? "text" : "password"} 
                     icon={isPasswordVisible ? <IconEye stroke={1} /> : <IconEyeOff stroke={1} />}
                     iconAction={handlePasswordVisible}
                 />
@@ -63,5 +64,5 @@ export function AuthForm({ type }: { type: tTypeForm }) {
 
             <ButtonForm>{isLogin ? "Login" : "Cadastrar-se"}</ButtonForm>
         </form>
-    );
+    )
 }
