@@ -19,10 +19,10 @@ const api = axios.create({
 export async function registerUser(data: TRegisterDataForm) {
     try {
         const response = await api.post('/register', data)
-        return true
+        return response
     } catch (error) {
         console.error("Erro ao cadastrar usuário:", error)
-        return false
+        return null
     }
 }
 

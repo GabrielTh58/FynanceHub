@@ -8,7 +8,7 @@ import { IconArrowRight, IconCreditCardPay, IconCreditCardRefund, IconWallet } f
 import Link from "next/link";
 import { getUser } from "@/services/userServices";
 import { useEffect, useState } from "react";
-import { useMonthlyReset } from "@/hooks/useMonthlyReset";
+import { useMonthlyReportAndReset } from "@/hooks/useMonthlyReportAndReset";
 import { Transaction } from "@/types/transactionTypes";
 
 export default function Page() {
@@ -33,11 +33,7 @@ export default function Page() {
         }
     }, []);
 
-    useEffect(() => {
-        if (transactions.length > 0) {
-            useMonthlyReset({ lastTransactions: transactions, setLastTransactions: setTransactions });
-        }
-    }, [transactions])
+    useMonthlyReportAndReset({ lastTransactions: transactions, setLastTransactions: setTransactions });
 
     return (
         <>

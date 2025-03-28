@@ -1,6 +1,6 @@
 'use client'
 
-import { IconEye, IconEyeCancel, IconEyeOff, IconMail } from "@tabler/icons-react";
+import { IconEye, IconEyeOff, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
 import { InputFields } from "./InputFields";
 import { ButtonForm } from "../buttons/ButtonForm";
