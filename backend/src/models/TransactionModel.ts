@@ -9,7 +9,6 @@ export class TransactionModel {
     }
 
     async create(data: Omit<Transaction, "id">): Promise<Transaction> {
-        console.log(data);
         
         return await this.prisma.transaction.create({
             data: {

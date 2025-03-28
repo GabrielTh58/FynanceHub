@@ -32,8 +32,6 @@ export async function createTransaction(
 export async function updateTransaction(id: number, data: Transaction) {
     try {
         const response = await axios.put(`${API_URL}/${id}`, data);
-        console.log("Transação atualizada:", response.data);
-
         return response.data
 
     } catch (e) {

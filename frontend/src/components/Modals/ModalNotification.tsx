@@ -16,7 +16,6 @@ export function ModalNotification({ hasNotifications, handleModalClose }: ModalN
             localStorage.removeItem("hasNewReport"); // Desativar notificação
             handleModalClose();
 
-            console.log("Relatório baixado com sucesso!");
         } catch (error) {
             console.error("Erro ao atualizar localStorage:", error);
         }

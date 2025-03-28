@@ -20,7 +20,7 @@ export function useTransactionSummary() {
                     JSON.stringify(prevSummary) !== JSON.stringify(data) ? data : prevSummary
                 )
             } catch (e:any) {
-                console.log(`Erro ao buscar resumo de transações: ${e.message}`);
+                console.error(`Erro ao buscar resumo de transações: ${e.message}`);
             }
         }
     

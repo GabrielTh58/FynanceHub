@@ -10,7 +10,6 @@ export function useIncomeExpenseChartData() {
             try {
                 const data = await getIncomeExpenseData();
                 if (!data) return
-                console.log("Dados recebidos para o gráfico:", data);
                 setChartData(data);
             } catch (e: any) {
                 console.error(e)
