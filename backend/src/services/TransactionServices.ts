@@ -1,6 +1,6 @@
 import { TransactionCategory, TransactionType } from "@prisma/client";
 import { TransactionModel } from "../models/TransactionModel";
-import { Transaction } from "../core/transactions/Transaction";
+import { Transaction } from "../entities/transactions/Transaction";
 import { UserModel } from "../models/UserModel";
 
 export default class TransactionServices {

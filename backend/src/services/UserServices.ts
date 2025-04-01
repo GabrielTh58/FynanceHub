@@ -1,4 +1,4 @@
-import { User } from "../core/users/User";
+import { User } from "../entities/users/User";
 import { UserModel } from "../models/UserModel";
 import bcrypt from "bcrypt";
 export default class UserServices {

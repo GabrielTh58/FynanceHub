@@ -1,5 +1,5 @@
 import { PrismaClient, TransactionCategory, TransactionType } from "@prisma/client";
-import { Transaction } from "../core/transactions/Transaction";
+import { Transaction } from "../entities/transactions/Transaction";
 
 export class TransactionModel {
     private prisma: PrismaClient

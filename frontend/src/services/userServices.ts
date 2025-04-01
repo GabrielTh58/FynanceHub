@@ -1,10 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const baseURL = "http://localhost:5000/users";
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "")}/transactions`
+
 export async function getUser() { 
     try{
         const userId = Cookies.get("userId");
-        const response = await axios.get(`${baseURL}/${userId}`);
+        const response = await axios.get(`${API_URL}/${userId}`);
                 
         return response.data
     }catch(e:any){
@@ -15,7 +16,7 @@ export async function getUser() {
 
 export async function resetPassword(email: string, currentPassword: string, newPassword: string) {
     try{
-        const response = await axios.post(`${baseURL}/reset-password`, {
+        const response = await axios.post(`${API_URL}/reset-password`, {
             email,
             currentPassword,
             newPassword
@@ -30,7 +31,7 @@ export async function resetPassword(email: string, currentPassword: string, newP
 
 export async function deleteUser(id:number){
     try{
-        const response = await axios.delete(`${baseURL}/${id}`)
+        const response = await axios.delete(`${API_URL}/${id}`)
         if(response.status === 200){
             Cookies.remove("token");
         }

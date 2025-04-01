@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { Transaction } from "@/types/transactionTypes";
 
-const API_URL = 'http://localhost:5000/transactions';
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "")}/transactions`
 
 export async function createTransaction(
     description: string, 
