@@ -1,6 +1,6 @@
 import { IconBell, IconBellRingingFilled, IconMenu2, IconX, IconUser, IconSettings } from "@tabler/icons-react"
 import { useContext, useState } from "react"
-import { ModalNotification } from "@/components/Modals/ModalNotification"
+import { ModalNotification } from "@/components/modals/ModalNotification"
 import { MenuContext } from "@/context/MenuContext"
 import { useNotifications } from "@/hooks/useNotifications"
 import Link from "next/link"

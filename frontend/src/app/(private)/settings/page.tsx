@@ -2,13 +2,13 @@
 
 import { useEffect, useState } from "react"
 import { deleteUser, getUser } from "@/services/userServices"
-import { SettingsNavLink } from "@/components/Layout/SettingNavLink"
-import { SettingsInfoText } from "@/components/Layout/SettingsInfoText"
+import { SettingsNavLink } from "@/components/layout/SettingNavLink"
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { ModalResetPassword } from "@/components/Modals/ModalResetPassword"
-import { ModalConfirmation } from "@/components/Modals/ModalConfirmation"
-import { ActionButton } from "@/components/Buttons/ActionButton"
+import { ModalResetPassword } from "@/components/modals/ModalResetPassword"
+import { ModalConfirmation } from "@/components/modals/ModalConfirmation"
+import { ActionButton } from "@/components/buttons/ActionButton"
 
 interface User {
     id: number

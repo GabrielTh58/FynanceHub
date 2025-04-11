@@ -1,14 +1,14 @@
 "use client"
 
-import { ActionButton } from "@/components/Buttons/ActionButton"
+import { ActionButton } from "@/components/buttons/ActionButton"
 import { IconAdjustmentsHorizontal, IconPlus, IconX } from "@tabler/icons-react"
 import { useState } from "react"
-import { ModalTransactionForm } from "@/components/Modals/ModalTransactionForm"
+import { ModalTransactionForm } from "@/components/modals/ModalTransactionForm"
 import { Transaction } from "@/types/transactionTypes"
 import { useTransaction } from "@/hooks/useTransaction"
 import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils"
 import { deleteTransaction } from "@/services/transactionService"
-import { ModalFilter } from "@/components/Modals/ModalFilter"
+import { ModalFilter } from "@/components/modals/ModalFilter"
 
 export default function Page() {
     const [isModalTransactionOpen, setisModalTransactionOpen] = useState(false)

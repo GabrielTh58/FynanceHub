@@ -1,6 +1,6 @@
 "use client";
 
-import { ModalConfirmation } from "@/components/Modals/ModalConfirmation";
+import { ModalConfirmation } from "@/components/modals/ModalConfirmation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";

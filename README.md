@@ -2,6 +2,10 @@
 
 **FynanceHub** é uma aplicação **full stack** desenvolvida para uso pessoal, com o objetivo de facilitar o controle financeiro do meu trabalho como autônomo. A plataforma permite o gerenciamento de entradas e saídas, exibição de gráficos interativos e geração de relatórios em PDF no fim de cada mês — tudo de forma simples, responsiva e segura.
 
+## 🧠 Sobre o Projeto
+
+Este projeto surgiu da necessidade de ter uma ferramenta própria para acompanhar minha vida financeira profissional. Quis desenvolver algo simples de usar, mas robusto o suficiente para oferecer uma visão clara e prática das minhas finanças — enquanto pratico conceitos importantes como autenticação, APIs REST, manipulação de dados e geração de relatórios.
+
 ---
 
 ## ✨ Funcionalidades
@@ -29,8 +33,7 @@
 ### Back-end
 - Node.js
 - Express.js
-- PostgreS
-QL
+- PostgreSQL
 - Prisma
 - JWT (autenticação)
 - Bcrypt (criptografia de senhas)
@@ -44,11 +47,6 @@ QL
 
 ---
 
-## 🧠 Sobre o Projeto
-
-Este projeto surgiu da necessidade de ter uma ferramenta própria para acompanhar minha vida financeira profissional. Quis desenvolver algo simples de usar, mas robusto o suficiente para oferecer uma visão clara e prática das minhas finanças — enquanto pratico conceitos importantes como autenticação, APIs REST, manipulação de dados e geração de relatórios.
-
----
 
 ## 🚀 Como Executar o Projeto
 
