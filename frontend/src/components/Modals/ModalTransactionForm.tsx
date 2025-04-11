@@ -1,6 +1,6 @@
 import { useModalTransactionForm } from "@/hooks/useModalTransactionForm"
-import { InputFields } from "../forms/InputFields"
-import { ButtonForm } from "../buttons/ButtonForm"
+import { InputFields } from "../Forms/InputFields"
+import { ButtonForm } from "../Buttons/ButtonForm"
 import { IconX } from "@tabler/icons-react"
 import { useState } from "react"
 import { TransactionCategory } from "@/utils/transactionsUtils"

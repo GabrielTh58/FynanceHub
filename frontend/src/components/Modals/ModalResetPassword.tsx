@@ -1,7 +1,7 @@
 import { IconEye, IconEyeOff, IconMail, IconX } from "@tabler/icons-react";
 import { useResetPassword } from "@/hooks/useResetPassword";
-import { InputFields } from "../forms/InputFields";
-import { ButtonForm } from "../buttons/ButtonForm";
+import { InputFields } from "../Forms/InputFields";
+import { ButtonForm } from "../Buttons/ButtonForm";
 import { Modal } from "./Modal";
 import { useState } from "react";
 interface ModalFormProps {

@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import { AuthForm } from "@/components/forms/AuthForm";
+import { AuthForm } from "@/components/Forms/AuthForm";
 
 export default function Page() {
     return (

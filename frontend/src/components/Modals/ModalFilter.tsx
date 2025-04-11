@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FilterButton } from "../buttons/FilterButton";
+import { FilterButton } from "../Buttons/FilterButton";
 import { Modal } from "./Modal";
 
 type TTypeTransaction = "INCOME" | "EXPENSE" | "ALL"
