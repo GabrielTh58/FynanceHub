@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from "react";
-import { SideBar } from "@/components/components/dashboard/sidebar/SideBar";
-import { Header } from "@/components/components/layout/Header";
+import { SideBar } from "@/components/dashboard/sidebar/SideBar";
+import { Header } from "@/components/layout/Header";
 import { toast } from "react-toastify";
 
 export default function Layout({ children }: any) {

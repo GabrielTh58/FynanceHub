@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react"
 import { deleteUser, getUser } from "@/services/userServices"
-import { SettingsNavLink } from "@/components/components/layout/SettingNavLink"
-import { SettingsInfoText } from "@/components/components/layout/SettingsInfoText"
+import { SettingsNavLink } from "@/components/layout/SettingNavLink"
+import { SettingsInfoText } from "@/components/layout/SettingsInfoText"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { ModalResetPassword } from "@/components/components/modals/ModalResetPassword"
-import { ModalConfirmation } from "@/components/components/modals/ModalConfirmation"
+import { ModalResetPassword } from "@/components/modals/ModalResetPassword"
+import { ModalConfirmation } from "@/components/modals/ModalConfirmation"
 import { ActionButton } from "@/components/buttons/ActionButton"
 
 interface User {

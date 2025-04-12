@@ -1,5 +1,5 @@
 import React from "react";
-import { useTransactionSummary } from "../../../hooks/useTransactionSummary";
+import { useTransactionSummary } from "../../hooks/useTransactionSummary";
 interface AnalyticsCardsProps {
     title: string
     icon: React.ReactNode

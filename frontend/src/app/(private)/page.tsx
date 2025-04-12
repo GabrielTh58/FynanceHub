@@ -1,9 +1,9 @@
 'use client'
 
-import { IncomeExpenseChart } from "@/components/components/charts/IncomeExpenseChart";
-import { ExpenseByCategory } from "@/components/components/charts/ExpenseByCategory";
-import { AnalyticsCards } from "@/components/components/dashboard/AnalyticsCards";
-import { LastTransactions } from "@/components/components/dashboard/LastTransactions";
+import { IncomeExpenseChart } from "@/components/charts/IncomeExpenseChart";
+import { ExpenseByCategory } from "@/components/charts/ExpenseByCategory";
+import { AnalyticsCards } from "@/components/dashboard/AnalyticsCards";
+import { LastTransactions } from "@/components/dashboard/LastTransactions";
 import { IconArrowRight, IconCreditCardPay, IconCreditCardRefund, IconWallet } from "@tabler/icons-react";
 import Link from "next/link";
 import { getUser } from "@/services/userServices";
