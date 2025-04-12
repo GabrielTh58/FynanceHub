@@ -3,12 +3,12 @@
 import { ActionButton } from "@/components/buttons/ActionButton"
 import { IconAdjustmentsHorizontal, IconPlus, IconX } from "@tabler/icons-react"
 import { useState } from "react"
-import { ModalTransactionForm } from "@/components/modals/ModalTransactionForm"
+import { ModalTransactionForm } from "@/components/components/modals/ModalTransactionForm"
 import { Transaction } from "@/types/transactionTypes"
 import { useTransaction } from "@/hooks/useTransaction"
 import { TransactionCategory, translateCategory, translateTransactionType } from "@/utils/transactionsUtils"
 import { deleteTransaction } from "@/services/transactionService"
-import { ModalFilter } from "@/components/modals/ModalFilter"
+import { ModalFilter } from "@/components/components/modals/ModalFilter"
 
 export default function Page() {
     const [isModalTransactionOpen, setisModalTransactionOpen] = useState(false)

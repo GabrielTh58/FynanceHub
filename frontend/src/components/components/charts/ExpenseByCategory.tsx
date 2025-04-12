@@ -7,12 +7,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
-} from "@/components/ui/chart";
+} from "@/components/components/ui/chart";
 import { useCategoryExpenseChartData } from "@/hooks/useCategoryExpenseChartData";
 import { TransactionCategory, translateCategory } from "@/utils/transactionsUtils";
 

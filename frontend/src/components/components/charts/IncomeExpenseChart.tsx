@@ -8,14 +8,14 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
   ChartTooltip,
-} from "@/components/ui/chart";
+} from "@/components/components/ui/chart";
 
 import { useIncomeExpenseChartData } from "@/hooks/useIncomeExpenseChartData";
 

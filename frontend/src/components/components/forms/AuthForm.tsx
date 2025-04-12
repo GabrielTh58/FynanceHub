@@ -2,7 +2,7 @@
 
 import { IconEye, IconEyeOff, IconMail } from "@tabler/icons-react";
 import Link from "next/link";
-import { InputFields } from "@/components/forms/InputFields";
+import { InputFields } from "@/components/components/forms/InputFields";
 import { ButtonForm } from "@/components/buttons/ButtonForm";
 import { useAuthForm } from "@/hooks/useAuthForm";
 import { useState } from "react";
