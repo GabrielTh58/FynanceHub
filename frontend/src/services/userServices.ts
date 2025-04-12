@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "")}/transactions`
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "")}/users`
 
 export async function getUser() { 
     try{
