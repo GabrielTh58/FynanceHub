@@ -9,6 +9,7 @@ export function Header() {
     const [isNotificationsModalOpen, setIsNotificationsModalOpen] = useState(false)
 
     const { isMenuOpen, toggleMenu } = useContext(MenuContext)
+    
     const hasNotifications = useNotifications()
 
     function handleModalClose() {

@@ -8,14 +8,13 @@ import { IconArrowRight, IconCreditCardPay, IconCreditCardRefund, IconWallet } f
 import Link from "next/link";
 import { getUser } from "@/services/userServices";
 import { useEffect, useState } from "react";
-import { useMonthlyReportAndReset } from "@/hooks/useMonthlyReportAndReset";
+import { useMonthlyReport } from "@/hooks/useMonthlyReport";
 import { Transaction } from "@/types/transactionTypes";
 
 export default function Page() {
     const [user, setUser] = useState<string | null>(null);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
  
-
     useEffect(() => {
         async function fetchUser() {
             const data = await getUser();
@@ -33,7 +32,7 @@ export default function Page() {
         }
     }, []);
 
-    useMonthlyReportAndReset({ lastTransactions: transactions, setLastTransactions: setTransactions });
+    useMonthlyReport({ lastTransactions: transactions, setLastTransactions: setTransactions });
 
     return (
         <>

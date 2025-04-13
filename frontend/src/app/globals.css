@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
   color: white;
 }
 
@@ -19,17 +18,17 @@ input:-webkit-autofill {
 }
 
 @layer components {
+  .primary-gradient{
+    @apply bg-gradient-to-r from-[#0075FF]/[0.8] to-[#004699]
+  }
+
   .bg-custom-gradient {
     @apply bg-gradient-to-r from-[#121241] to-[#2E2EA7];
   }
 
   .bg-custom-gradient-card {
     @apply  bg-gradient-to-br from-[#060B26] to-[#1A1F37]/[0.50]
-  }
-
-  .primary-gradient{
-    @apply bg-gradient-to-r from-[#0075FF]/[0.8] to-[#004699]
-  }
+  } 
 
   .chart-gradient{
     @apply bg-gradient-to-b from-[#060B28]/[0.8] to-[#0A0E23]/[0.7]
