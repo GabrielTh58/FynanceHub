@@ -45,7 +45,7 @@ Este projeto surgiu da necessidade de ter uma ferramenta própria para acompanha
 
 ## 📷 Demonstração
 
-> ![Demonstração do FynanceHub](https://github.com/GabrielTh58/FynanceHub/blob/main/frontend/public/preview_login.png)
+> ![Demonstração do FynanceHub](https://github.com/GabrielTh58/FynanceHub/raw/main/frontend/public/preview_login.png)
 > ![Demonstração do FynanceHub](https://github.com/GabrielTh58/FynanceHub/raw/main/frontend/public/dashboard.gif)
 
 ---
